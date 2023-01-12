@@ -1,25 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Routes, Route} from "react-router-dom"
+import { ProductProvider } from './contexts/ProductContext';
+
+
+import Home from './pages/Home';
+import Shop from './pages/Shop';
+import Header from './components/Header';
+import { LessonProvider } from './contexts/LessonContext';
+import Tutorials from './pages/Tutorials';
+import ProductDetail from './pages/ProductDetail';
+import CourseDetail from './pages/CourseDetail';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Header/>
+        <LessonProvider>
+          <ProductProvider>
+            <Routes>
+              <Route path={"/"} element={<Home/>} />
+              <Route path={"/shop"} element={<Shop />} />
+              <Route path={"/tutorials"} element={<Tutorials />} />
+              <Route path={"/product/:slug"} element={<ProductDetail />} />
+              <Route path={"/course/:slug"} element={<CourseDetail/>} />
+            </Routes>
+          </ProductProvider>
+        </LessonProvider>
+    </BrowserRouter>
   );
 }
 

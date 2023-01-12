@@ -1,0 +1,21 @@
+button {
+    display: block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: var(--secondary-color);
+    background-color: var(--basic);
+    border: 2px outset var(--primary-color)
+}
+
+button:hover {
+    transform: scale(.9);
+    transition: .4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: pointer;
+    /* z-index: 10; */
+}
+
+@media(max-width:700px) {
+    button {
+        width: 100%;
+    }
+}

@@ -1,0 +1,88 @@
+import React from 'react'
+
+type instructions = {
+    instructions: {
+        id: number,
+        slug: string,
+        description: string,
+        step: string,
+        content: string, 
+        image: string
+    }[]
+}
+
+
+type category = {
+    category: {
+        id: number
+        name:string
+    }[]
+}
+
+type asset = {
+    assets: {
+    id: number
+    name: string
+    uses:string
+    }[]
+}
+export const Instructions = ({ instructions }: instructions) => {
+    
+  return (
+    <section className="section instructions">
+          { instructions && instructions.map((item) => (
+              <article key={item.id}>
+                  <h2>{ item.step}</h2>
+                  <div className="instructions__step flex">
+                    <div className="image">
+                      <img src={"http://127.0.0.1:8000"+item.image} alt="" />
+                    </div>
+
+                  <div className="text">
+                      <p>{ item.content}</p>
+                  </div>
+                </div>
+              </article>
+        ))}
+    </section>
+  )
+}
+
+
+export const Asset = ({assets}:asset) => {
+    return (
+        <section className="section assets">
+            <p>These are all the asset to get started.</p>
+
+            <div className="assets__items">
+                {assets && assets.map((item) => (
+                    
+                    <ul key={item.id}>
+                        <li> {item.name} </li>
+                        <p>{ item.uses}</p>
+                    </ul>
+                ))}
+            </div>
+        </section>
+    )
+}
+
+export const Category = ({category}:category) => {
+    return (
+        <section className="section category">
+            
+            <p>This tutorials is based the following categories:</p>
+            
+            <ul className="category__items section">
+                {category && category.map((item) => (
+                    
+                    <li key={item.id}> {item.name} </li>
+                    
+                ))}
+
+            </ul>
+                <p>Be sure to get all the assets to get started if you haven't!</p>
+        </section>
+    )
+}
+
