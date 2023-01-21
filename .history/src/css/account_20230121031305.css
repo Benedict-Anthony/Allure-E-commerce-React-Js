@@ -1,0 +1,6 @@
+.account {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+}

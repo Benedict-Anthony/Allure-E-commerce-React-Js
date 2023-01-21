@@ -1,0 +1,16 @@
+.login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login :is(.form, .model) {
+    width: 100%;
+}
+
+.model img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: top;
+}

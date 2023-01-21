@@ -1,0 +1,13 @@
+.login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login .model {
+    width: 30rem;
+}
+
+.model img {
+    width: 100%;
+}

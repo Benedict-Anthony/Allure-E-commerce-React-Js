@@ -1,0 +1,98 @@
+.login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-top: 20px; */
+    column-gap: 20px;
+}
+
+.login :is(.form, .model) {
+    width: 100%;
+}
+
+.login .form {
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    padding: 20px;
+    width: 700px;
+}
+
+.login .form h3 {
+    color: var(--secondary-color);
+    font-size: 32px;
+    text-transform: capitalize;
+}
+
+.w-50 {
+    display: flex;
+    column-gap: 20px;
+}
+
+.login .form .form-group {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin: 20px 0;
+}
+
+.login .form .form-group label {
+    color: var(--secondary-color);
+    font-size: 18px;
+}
+
+.login .form .form-group input {
+    padding: 10px 12px;
+    margin-top: 4px;
+    border: 0;
+    outline: 0;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.login .form .social {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.login .form :is(button) {
+    width: 100%;
+    font-size: 20px;
+}
+
+.login .model img {
+    width: 100%;
+    margin-left: auto;
+    max-height: 40rem;
+    object-fit: cover;
+    object-position: top;
+}
+
+.login .model-2 {
+    width: 50%;
+
+}
+
+@media(max-width:946px) {
+    .login {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .login .model {
+        display: none;
+    }
+}
+
+@media(max-width:480px) {
+    .w-50 {
+        flex-flow: column;
+        gap: 0;
+    }
+}

@@ -1,0 +1,68 @@
+.account {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.account .account__profile {
+    width: 100%;
+
+}
+
+.account .account__profile h2 {
+    font-size: 18px;
+    color: var(--secondary-color);
+    text-transform: capitalize;
+}
+
+.account .account__profile div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 20px;
+}
+
+.account .account__profile div img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    border: 4px outset var(--primary-color);
+}
+
+.account .account__profile div h1 {
+    font-size: 1.55rem;
+    padding: 10px 0;
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+.account .account__profile div p {
+    font-size: 15px;
+    color: gray;
+}
+
+.account .account__profile aside {
+    width: 300px;
+}
+
+.account .account__profile aside div {
+    margin: 20px 0;
+    padding: 10px 15px;
+    box-shadow: 2px 2px 5px 1px var(--primary-color);
+    cursor: pointer;
+}
+
+.account .account__profile aside div p {
+    font-size: 20px;
+    color: var(--secondary-color);
+    font-weight: 600;
+    padding: 4px 0;
+}
+
+.account .account__profile aside div span {
+    font-size: 16px;
+    color: gray;
+}
