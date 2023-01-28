@@ -1,0 +1,143 @@
+header {
+    padding: 3px 0px;
+    /* background-color: var(--primary-color); */
+    border-bottom: 3px solid var(--primary-color);
+    /* osition: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;p */
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav .logo {
+    font-size: 30px;
+    /* font-family: 'Great Vibes', cursive;
+     */
+    font-family: 'Playball', cursive;
+}
+
+header nav li {
+    position: relative;
+    margin: 0 10px;
+}
+
+header nav li::after {
+    content: '';
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+header nav li:hover::after {
+    width: 100%;
+}
+
+header nav ul li a {
+    color: var(--text-color);
+    font-size: var(--fontSize);
+    text-transform: capitalize;
+}
+
+header .cart {
+    width: 30px;
+}
+
+header .cart img {
+    width: 100%;
+}
+
+
+
+.nav_icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    column-gap: 10px;
+}
+
+
+
+.nav_icons svg {
+    color: var(--secondary-color);
+    font-size: 20px;
+    margin: 0 2px;
+}
+
+
+.nav__bottom {
+    margin-top: 2rem;
+    width: 100%;
+    margin: auto;
+    position: fixed;
+    bottom: 0;
+    left: 100%;
+    background-color: var(--basic);
+    padding: 15px 0;
+    box-shadow: 3px 4px 3px 4px var(--secondary-color);
+}
+
+.nav__bottom ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav__bottom ul li {
+    margin: 0 20px;
+}
+
+.nav__bottom ul li svg {
+    color: var(--secondary-color);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+@media(max-width:768px) {
+    header nav .nav_links {
+        position: absolute;
+        top: -100vh;
+        right: 0;
+        width: 80%;
+        background-color: var(--basic);
+        border-left: 3px solid var(--primary-color);
+        height: 100vh;
+        z-index: 10;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 30px;
+        padding-left: 50px;
+        padding-top: 50px;
+        display: none;
+
+    }
+
+    .nav_icons li {
+        display: none;
+    }
+
+    header nav .nav_links.active {
+        top: 0;
+    }
+
+    .close {
+        position: absolute;
+        top: 7px;
+        left: .6rem;
+        font-weight: 100;
+        font-size: 25px;
+        color: var(--secondary-color);
+    }
+
+    .nav__bottom {
+        left: 0;
+    }
+
+}

@@ -1,0 +1,230 @@
+/* USER ACCOUN AND DETAILS */
+
+.account {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.account .account__profile {
+    width: 100%;
+
+}
+
+.account .account__profile h2 {
+    font-size: 18px;
+    color: var(--secondary-color);
+    text-transform: capitalize;
+    text-align: left;
+    margin: 10px 0;
+}
+
+.account .account__profile .user {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 20px;
+}
+
+.account .account__profile div img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    border: 4px outset var(--primary-color);
+}
+
+.account .account__profile div h1 {
+    font-size: 1.55rem;
+    padding: 10px 0;
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+.account .account__profile div p {
+    font-size: 15px;
+    color: gray;
+}
+
+.account .account__profile aside {
+    width: 300px;
+}
+
+.account .account__profile aside article {
+    margin: 20px 0;
+    padding: 10px 15px;
+    box-shadow: 2px 2px 5px 1px var(--primary-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.account .account__profile aside article:hover {
+    transform: scale(.98);
+}
+
+.account .account__profile aside article p {
+    font-size: 20px;
+    color: var(--secondary-color);
+    font-weight: 600;
+    padding: 4px 0;
+    text-transform: capitalize;
+}
+
+.account .account__profile aside div span {
+    font-size: 16px;
+    color: gray;
+}
+
+/* COMPONENT STYLES ========= CUSTOMER ORDER SUMAARY  */
+
+.account__summary {
+    width: 100%;
+    background-color: var(--basic);
+}
+
+
+
+
+
+
+
+
+/*  ORDER COMPONENT STYLING */
+
+.order_status__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 40px;
+    margin-bottom: 20px;
+
+}
+
+.order_status_details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 20px;
+}
+
+
+
+.order_status_details article {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 10px 0;
+    border: 1px outset var(--primary-color);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+
+.order_status_details article div p {
+    line-height: 1.6em;
+    color: gray;
+    font-size: 16px;
+}
+
+.order_status_details article div p span {
+    line-height: 1.6em;
+    color: var(--secondary-color);
+    font-size: 16px;
+}
+
+
+
+.order_status_details article img {
+    width: 100px;
+    border-radius: 10px;
+}
+
+
+.order_status_details article button svg {
+    margin-left: 10px;
+    color: var(--secondary-color)
+}
+
+
+
+
+/* ADDRESS COMPONENT STYLES */
+.address {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* height: 100vh; */
+}
+
+.address h1 {
+    font-size: 20px;
+}
+
+.address article p {
+    margin-top: 5px;
+    font-size: 18px;
+    color: gray;
+}
+
+.address article p span {
+    color: var(--secondary-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media(max-width:768px) {
+    .account .account__profile aside {
+        width: 100%;
+    }
+
+    .account__summary {
+        pa
+        position: absolute;
+        top: 40px;
+        bottom: 0;
+        right: calc(100% + 50px);
+        width: 100%;
+        background-color: var(--basic);
+    }
+
+    .account__summary.show {
+        right: 5px;
+    }
+}
+
+
+@media(max-width:480px) {
+    .order_status_details {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .order_status__button {
+        column-gap: 10px;
+        margin-bottom: 20px;
+
+    }
+}
