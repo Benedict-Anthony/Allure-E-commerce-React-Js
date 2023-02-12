@@ -1,39 +1,42 @@
 import { ChangeEvent, useState } from "react"
 
-type createAccountType = {
-    firstName: string
-    lastName: string
-    email: string
+type formDataType = {
+    first_name: string
+    last_name: string
+    email:string,
+    phone:string
     password: string
     passwordcomfirm: string
 }
 const useForm = (value: string) => {
-    const [createAccount, setCreateAccount] = useState<createAccountType>({
-        firstName: value,
-        lastName: value,
+    const [formData, setFormData] = useState<formDataType>({
+        first_name: value,
+        last_name: value,
         email: value,
+        phone:value,
         password: value,
         passwordcomfirm: value
 
     })
 
     const reset = () => {
-        setCreateAccount({
-            firstName: value,
-            lastName: value,
-            email: value,
-            password: value,
-            passwordcomfirm: value
+        setFormData({
+            first_name: "",
+            last_name: "",
+            email: "",
+            phone:"",
+            password: "",
+            passwordcomfirm: ""
         })
     }
     const handleAccount = (event: ChangeEvent<HTMLInputElement>) => {
-        setCreateAccount({ ...createAccount, [event.target.name]: event.target.value })
+        setFormData({ ...formData, [event.target.name]: event.target.value })
     }
 
 
-    const loginData = { email: createAccount.email, password: createAccount.password }
+    const loginData = { email: formData.email, password: formData.password }
 
-    return { createAccount, handleAccount, reset, loginData }
+    return { formData, handleAccount, reset, loginData }
 
 }
 

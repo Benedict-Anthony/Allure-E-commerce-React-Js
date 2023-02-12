@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-oauth/google": "^0.6.1",
     "@splidejs/react-splide": "^0.7.10",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -14,6 +15,7 @@
     "framer-motion": "^7.3.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-facebook": "^9.0.12",
     "react-icons": "^4.4.0",
     "react-router-dom": "^6.4.0",
     "react-scripts": "5.0.1",
