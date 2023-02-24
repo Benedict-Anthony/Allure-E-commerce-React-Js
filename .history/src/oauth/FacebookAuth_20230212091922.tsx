@@ -7,7 +7,7 @@ import { oAuth } from '../utils/oauth';
 const FacebookAuth = () => {
     const appID = process.env.REACT_APP_FACEBOOK_APP_ID as string;
     function handleSuccess(response: any) {
-        oAuth(response.authResponse.accessToken)
+        oAuth(response.authResponse.accessToken, "facebook")
         console.log(response)
 
     }

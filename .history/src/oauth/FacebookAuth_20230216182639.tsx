@@ -3,6 +3,7 @@ import { FacebookProvider, LoginButton } from 'react-facebook';
 import { BsFacebook } from 'react-icons/bs';
 import { oAuth } from '../utils/oauth';
 
+import jwt_decode from "jwt-decode";
 
 const FacebookAuth = () => {
     const appID = process.env.REACT_APP_FACEBOOK_APP_ID as string;

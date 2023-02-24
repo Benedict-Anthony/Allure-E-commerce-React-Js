@@ -4,8 +4,8 @@ export const oAuth = async (token:any) => {
             token: token,
             backend:"facebook",
             grant_type: "convert_token",
-            client_id:"yiSpPAuSsg99UZPxutZcxngF5Nspy3JeNWtXXBdK",
-            client_secret:'nvPMQOjlK1647L7ndO9MBLmncqsVLy3MdS6tr6UG1XUbeOuG1QbgWNVfrr4QF8sPdbj5qu0JByVaGUTRlYSj2zV6p3zkO2dXD54Ju7G4xWkW6aW961yCIE18G8QuKjgf'
+            client_id:"yYXfWBQdFkrdbtBbED39awes1x2angCogJoiLwzB",
+            client_secret:"CTNdEEIWndZlFqK0eSvB5iA8NzvhNx5WH6PBdxguexLpZ9NWk5ZdT7EgYCe9uKof6npLJG6nFOhh5tu2Mv9uOQm6IIwqUENaXuK4Grxr1KR53EZxrArA2UlC49P2ZvUS"
         }
         const config = {
             headers: {

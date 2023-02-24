@@ -1,22 +1,21 @@
 import React from 'react'
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import { oAuth } from '../utils/oauth';
 import jwt_decode from "jwt-decode";
 
 
 const GoogleAuth = () => {
     const registerOrgetUser = async (data: any) => {
-
         const user = await fetch(`http://127.0.0.1:8000/api/user/google/`, {
             headers: {
                 "Content-Type": "application/json"
             },
             method: "POST",
-            body: JSON.stringify(data)
         })
 
-        if (user.status === 200 || user.status === 201 || user.statusText
-            === "OK") {
-            const verifiedUser = await fetch(`http://127.0.0.1:8000/api/auth/token`, {
+        if (user.status === 200) {
+
+            const verifiedUser = await fetch(`http://127.0.0.1:8000/api/auth/`, {
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -32,13 +31,15 @@ const GoogleAuth = () => {
 
             const activeUser = await verifiedUser.json()
             console.log(activeUser)
-
+            console.log(user)
         }
     }
     const clientId = process.env.REACT_APP_GOOGL_APP_ID as string;
     function handleSuccess(response: any) {
         const data = jwt_decode(response.credential)
+
         registerOrgetUser(data)
+        console.log(data)
         console.log(response)
     }
 

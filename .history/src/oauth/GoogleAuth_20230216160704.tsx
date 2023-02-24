@@ -1,5 +1,6 @@
 import React from 'react'
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import { oAuth } from '../utils/oauth';
 import jwt_decode from "jwt-decode";
 
 
@@ -32,7 +33,7 @@ const GoogleAuth = () => {
 
             const activeUser = await verifiedUser.json()
             console.log(activeUser)
-
+            console.log(user)
         }
     }
     const clientId = process.env.REACT_APP_GOOGL_APP_ID as string;
