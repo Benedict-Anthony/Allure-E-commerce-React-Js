@@ -1,9 +1,0 @@
-.login {
-    font-display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.login :is(.form, .model) {
-    width: 100%;
-}

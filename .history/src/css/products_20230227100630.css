@@ -1,0 +1,274 @@
+/* .products {
+    margin-top: 60px;
+}
+
+.product__info {
+    margin-top: 25px;
+}
+
+.disc {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 10px;
+}
+
+
+
+.product__info p {
+    font-size: var(--fontSize);
+    color: var(--secondary-color);
+    text-transform: capitalize;
+}
+
+.product__info span {
+    font-size: var(--fontSize);
+    color: var(--primary-color);
+} */
+
+.single__products {
+    background-color: var(--secondary-color);
+    padding: 0px 10px 0 0px;
+    color: var(--basic);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+    position: relative;
+}
+
+.single__products .image {
+    width: 80%;
+    height: auto;
+}
+
+.single__products .image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+}
+
+.single__products .info {
+    width: 100%;
+    line-height: 1.4;
+}
+
+.single__products .info .info__price {
+    padding: 10px 0;
+}
+
+
+.cart_buttons {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--secondary-color);
+}
+
+.cart_buttons_add {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cart_quantity {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 30px;
+    color: var(--primary-color);
+}
+
+.single__products .info .info__text h2 {
+    font-weight: 400;
+    padding-bottom: 1rem;
+    color: var(--primary-color);
+    letter-spacing: 4px;
+}
+
+.single__products .info .info__text p {
+    font-size: 18px;
+    line-height: 1.4em;
+    font-weight: normal;
+}
+
+.single__products .info .info__price p,
+.single__products .info .info__price .strike {
+    font-size: 17px;
+    color: var(--primary-color);
+}
+
+.single__products .info .info__price .strike {
+    font-size: 10px;
+}
+
+
+.single__products .info .rating {
+    padding-top: 1rem;
+}
+
+
+.single__products .info .rating h3 {
+    font-weight: 300;
+    letter-spacing: 5px;
+    text-transform: capitalize;
+}
+
+.single__products .info .rating .stars {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 10px;
+    gap: 15px;
+}
+
+.single__products .info .rating .stars svg {
+    color: var(--primary-color);
+    font-size: 16px;
+    font-weight: 100;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.swiper-button-next:after,
+.swiper-rtl .swiper-button-prev:after {
+    content: 'next';
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--primary-color);
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    padding: 20px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 10px;
+    text-transform: none !important;
+    letter-spacing: 0;
+    font-variant: initial;
+    line-height: 1;
+}
+
+.swiper-pagination-bullet {
+    background: var(--secondary-color);
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet {
+    background-color: var(--primary-color);
+}
+
+
+@media(max-width:700px) {
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+        font-size: 10px;
+        right: 20;
+        text-transform: none !important;
+        letter-spacing: 0;
+        font-variant: initial;
+        line-height: 1;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: var(--primary-color);
+        width: 20px;
+        height: 20px;
+        font-size: 20px;
+        padding: 4px;
+        border-radius: 50%;
+        background-color: var(--secondary-color);
+    }
+
+    .single__products {
+        margin-top: 10px;
+        flex-flow: column;
+        text-align: center;
+        padding: 0 10px;
+    }
+
+
+    .single__products .image {
+        width: 90%;
+        margin-top: 20px;
+        height: auto;
+    }
+
+    .single__products .info .rating h3 {
+        font-size: 14px;
+
+    }
+
+    .single__products .info .info__text {
+        margin-top: 10px;
+    }
+
+    .single__products .info .info__text h2 {
+        font-size: 16px;
+    }
+
+    .single__products .info .rating .stars {
+        justify-content: center;
+
+    }
+}
+
+
+
+@media(max-width:500px) {
+    .cart_buttons {
+        flex-direction: column;
+    }
+}
