@@ -5,13 +5,13 @@ import Products from '../components/Products';
 import { FC } from "react";
 
 
-const Home:FC = () =>  {
+const Home: FC = () => {
 
-return (
+  return (
     <>
       <Landing />
+      <Products />
       <Courses />
-      <Products/>
     </>
   )
 }

@@ -49,7 +49,7 @@ const SignIn = () => {
 
 
   return (
-    <section className='container'>
+    <section className='container section'>
       {modal ? (
         <Modal>
           <h1>Account was created succesfuly.</h1>

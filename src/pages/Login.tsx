@@ -17,7 +17,7 @@ const Login = () => {
     reset()
   }
   return (
-    <section className='container'>
+    <section className='container section'>
       <main className="login">
         <form action="" className='form' onSubmit={handleSubmit}>
           <h3>Login to continue</h3>
