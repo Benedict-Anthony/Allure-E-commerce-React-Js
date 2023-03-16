@@ -4,9 +4,13 @@ import { Navigations } from '../scripts/topNavItems';
 import cart from "../assets/cart.png";
 import "../css/header.css"
 import { useUserContext } from '../contexts/UserAndCartContext';
+import Button from '../shared/Button';
+import { FaUser } from "react-icons/fa"
+
+
 
 const Header = () => {
-  const { getCartTotal } = useUserContext()
+  const { getCartTotal, isLoggedIn, logOutUser } = useUserContext()
   const cartTotal = getCartTotal()
 
   function addBar() {
@@ -15,6 +19,7 @@ const Header = () => {
 
     })
   }
+
   return (
     <header>
       <div className="container">
@@ -32,9 +37,18 @@ const Header = () => {
           </ul>
 
           <ul className="nav_icons">
+            {isLoggedIn ?
+              <>
+                <li><Link to={"/account"}><FaUser /></Link></li>
+                <li><Button type="button" hanldleOnclick={() => logOutUser()}>Logout</Button> </li>
 
-            <li><Link to={"login"}>Login</Link></li>
-            <li><Link to={"sign-in"}>Sign Up</Link></li>
+              </>
+              :
+              <>
+                <li><Link to={"login"}>Login</Link></li>
+                <li><Link to={"sign-in"}>Sign Up</Link></li>
+              </>
+            }
             <div className="cart cart-toggler" onClick={addBar}>
               <img src={cart} alt="" />
               <span className="cart-total">{cartTotal > 0 && cartTotal}</span>

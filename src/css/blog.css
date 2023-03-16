@@ -7,7 +7,9 @@
 }
 
 .post_card {
-    width: 100%
+    width: 100%;
+    text-align: left;
+    line-height: 1.7em;
 }
 
 .post_card img {
@@ -20,11 +22,12 @@
 .post_card h2 {
     font-size: 20px;
     font-weight: 700;
+    text-transform: capitalize;
 }
 
 
 .post_card p {
-    line-height: 1em;
+    line-height: 1.5em;
     font-size: 18px;
     margin-top: 10px;
 }

@@ -1,5 +1,5 @@
 import { ReactNode } from "react"
-import { initialBlogInterface, initialProductInterface } from "./reducerTypes"
+import { initialBlogInterface, initialProductInterface, orderedItems, profileTypes, service } from "./reducerTypes"
 
 export interface childrenProps {
     children: ReactNode
@@ -22,11 +22,22 @@ export interface items {
     id: number,
     quantity: number,
 }
+
+type token = {
+    access: string
+    refresh: string
+}
 export interface userAndCartContextInterface {
-    isLoggedIn: boolean,
+    isLoggedIn: boolean
     cartItems: items[]
-    loginUser: () => void
+    profile: profileTypes
+    userOrders: orderedItems[]
+    loginUser: (token: token) => void
     logOutUser: () => void
+    isAuthenticated: () => void
+    isNotAuthenticated: () => void
+    setUserProfile: () => void
+    getUserOrders: () => void
     getCartQuantity: (id: number) => number
     addToCart: (id: number) => void
     increaseCartQuantity: (id: number) => void
@@ -35,3 +46,13 @@ export interface userAndCartContextInterface {
     getCartTotal: () => number
 }
 
+
+// SERVICES CONTEXT
+
+export interface ServicesContextInterface {
+    services: service[]
+    serviceDetail: service[]
+    service: service
+    fecthServiceDetail: (slug: string) => void
+    bookService:(slug:string, book:string) => void
+}

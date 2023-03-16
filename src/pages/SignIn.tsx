@@ -1,7 +1,7 @@
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
 import loginModel from "../assets/model1.png";
-import "../css/login.css"
+import "../css/form.css"
 import Button from '../shared/Button';
 import useForm from '../hooks/useForm'
 import Alert from '../shared/Alert';
@@ -10,11 +10,12 @@ import FacebookAuth from '../oauth/FacebookAuth';
 import GoogleAuth from '../oauth/GoogleAuth';
 import Modal from '../components/Modal';
 import sendToServer from '../utils/sendData';
+import { useUserContext } from '../contexts/UserAndCartContext';
 
 
 
 const SignIn = () => {
-
+  const { isAuthenticated } = useUserContext()
   const { formData, handleAccount } = useForm("")
   const { error, handleError, resetError } = useError()
   const [modal, setModal] = useState(false)
@@ -47,7 +48,9 @@ const SignIn = () => {
     signUp()
   }
 
-
+  useEffect(() => {
+    isAuthenticated()
+  }, []) // eslint-disable-line
   return (
     <section className='container section'>
       {modal ? (

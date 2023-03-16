@@ -97,6 +97,17 @@
     color: var(--primary-color);
 }
 
+.cart_price_total {
+    text-align: right;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.cart_price_total span {
+    color: var(--primary-color)
+}
+
 .cart-empty {
     font-size: 30px;
     margin-top: 20px;
@@ -179,5 +190,6 @@
         font-size: 20px;
         margin-top: 20px;
         font-weight: 400;
+        padding: 10px;
     }
 }

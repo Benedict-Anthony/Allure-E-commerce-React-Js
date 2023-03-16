@@ -1,17 +1,20 @@
 import React from 'react'
+import { useUserContext } from '../contexts/UserAndCartContext'
 
 const Address = () => {
+    const { profile } = useUserContext()
     return (
+
         <div className="address">
 
-            <h1>My default shipping address</h1>
+            <h1>Default shipping address</h1>
 
             <article>
 
-                <p>State: <span>Edo state</span> </p>
-                <p>City: <span>Town</span> </p>
-                <p>Town: <span>Hall 4</span> </p>
-                <p>Address Description: <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur at sapiente, est asperiores accusantium dolore tempore laborum odio a eius.</span> </p>
+                <p>State: <span>{profile?.address?.state}</span> </p>
+                <p>City: <span>{profile?.address?.city}</span> </p>
+                <p>Town: <span>{profile.address?.town}</span> </p>
+                <p>Address Description: <span>{profile.address?.description}</span> </p>
             </article>
         </div>
     )

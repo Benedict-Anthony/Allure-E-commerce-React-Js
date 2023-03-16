@@ -6,6 +6,7 @@
 .hero {
     width: 100%;
     border-bottom: 3px outset var(--primary-color);
+    height: 100%;
 }
 
 
@@ -76,7 +77,7 @@
 @media(max-width:568px) {
     .hero .landing__page {
         flex-direction: column-reverse;
-
+        height: 80vh;
     }
 
     .landing__info p {

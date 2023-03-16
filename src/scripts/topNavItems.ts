@@ -5,42 +5,29 @@ export const Navigations = [
         to: "",
         page: true,
     },
-    // {
-    //     id: 2,
-    //     name: "courses",
-    //     to: "courses",
-    //     page: false,
 
-    // },
-    // {
-    //     id: 3,
-    //     name: "arrivals ",
-    //     to: "products",
-    //     page: false,
-
-    // },
     {
         id: 4,
         name: "shop",
         to: "shop",
         page: true,
     },
-
-    {
+  {
         id: 5,
+        name: "services",
+        to: "services",
+        page: true,
+
+
+    },
+    {
+        id: 6,
         name: "blog",
         to: "blog",
         page: true,
 
     },
-    {
-        id: 6,
-        name: "tutorials",
-        to: "tutorials",
-        page: true,
-
-
-    },
+  
 ]
 
 
@@ -59,13 +46,13 @@ export const Courses = [
 
     {
         id: 3,
-        name: "Customer ",
+        name: "Customers",
         count: 100
     },
 
     {
         id: 4,
-        name: "Reviewes",
+        name: "Reviews",
         count: 200
     },
 ]

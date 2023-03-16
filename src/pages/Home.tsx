@@ -2,6 +2,7 @@ import React from 'react';
 import Landing from '../components/Landing';
 import Courses from '../components/Courses';
 import Products from '../components/Products';
+import ServiceSlice from '../components/ServiceSlice';
 import { FC } from "react";
 
 
@@ -12,6 +13,7 @@ const Home: FC = () => {
       <Landing />
       <Products />
       <Courses />
+      <ServiceSlice />
     </>
   )
 }

@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { CartItems } from '../components/CartBar'
 import { useUserContext } from '../contexts/UserAndCartContext'
 import { FaChevronCircleLeft } from "react-icons/fa"
 import "../css/checkout.css"
 import Button from '../shared/Button'
+import ProductContext from '../contexts/ProductContext'
+
+
+
 
 const CheckOut = () => {
-    const { cartItems } = useUserContext()
+    const { data: { products } } = useContext(ProductContext)
 
+    const { cartItems, isNotAuthenticated } = useUserContext()
     const handleSubmit = () => {
         console.log(1234)
     }
@@ -21,10 +26,20 @@ const CheckOut = () => {
     const removeForm = () => {
         document.querySelector(".form")?.classList.remove("active")
     }
+
+    useEffect(() => {
+        document.querySelector(".form")?.classList.remove("active")
+        document.querySelector(".form")?.classList.remove("active")
+
+        isNotAuthenticated()
+    }, []) // eslint-disable-line
+
+
+    useEffect(() => {
+        removeForm()
+    }, []) // eslint-disable-line
     return (
         <section className='section container  check-out'>
-
-
             <form action="" className='form' onSubmit={handleSubmit}>
                 <Button type="button" hanldleOnclick={removeForm}><FaChevronCircleLeft /></Button>
                 <h3>Delivery Address</h3>
@@ -63,6 +78,17 @@ const CheckOut = () => {
                 {cartItems.length > 0 && cartItems.map((item) => (
                     <CartItems key={item.id} {...item} />
                 ))}
+
+                <div className="cart_price_total">
+                    Total:
+                    <span>
+                        {cartItems.reduce((total, item) => {
+                            const product = products.find((i) => i.id === item.id)
+
+                            return total + ((product?.product_price as number) * item.quantity)
+                        }, 0).toLocaleString()}
+                    </span>
+                </div>
             </div>
 
             <Button type='button' hanldleOnclick={showForm}>Checkout</Button>

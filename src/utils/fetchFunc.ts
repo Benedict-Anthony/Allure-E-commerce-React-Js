@@ -13,3 +13,18 @@ const getData = async (endpoint: string, slug?: number | string | null) => {
 
 
 export default getData
+
+
+export const fetchUserData = async (url: string, method: string) => {
+    const token = JSON.parse(localStorage.getItem("token") as any)
+    const config = {
+        method: method,
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token.access}`
+        },
+        
+    }
+    const response = await fetch(`http://127.0.0.1:8000/api/${url}/`, config)
+    return response
+}

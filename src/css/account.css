@@ -2,7 +2,7 @@
 
 .account {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     width: 100%;
 }
@@ -111,7 +111,7 @@
 
 .order_status__button {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     column-gap: 40px;
     margin-bottom: 20px;
@@ -214,13 +214,18 @@
     }
 
     .account__summary {
-        padding: 0 15px;
+        padding: 0 10px;
         position: absolute;
         top: 40px;
         min-height: calc(100vh + 30px);
         right: calc(100% + 50px);
         width: 100%;
         background-color: var(--basic);
+    }
+
+    .account__summary .login {
+        padding: 0;
+        margin-top: 0;
     }
 
     .account__summary.show {

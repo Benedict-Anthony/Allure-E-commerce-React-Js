@@ -24,7 +24,7 @@ export const landing = [
     {
         "text": "Hey, want to cover an event that is so special, Allure got you. check out out our servicess, and at a click, we are ready to make your events beautiful and its memory saved",
         "image": "./images/camera.jpg",
-          "link": "/shop",
+          "link": "/services",
         "readmore":"Check Our Services"
 
     }

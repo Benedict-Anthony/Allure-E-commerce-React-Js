@@ -7,7 +7,9 @@ export const userAction = {
     ADD_TO_CART: "ADD_TO_CART",
     REMOVE_TO_CART: "REMOVE_TO_CART",
     LOGIN: "LOGIN",
-    LOGOUT: "LOGOUT"
+    LOGOUT: "LOGOUT",
+    PROFILE: "PROFILE",
+    USER_ORDERS: "USERORDERS",
 }
 function userAndCartReducer(state: userInterface, action: actionInterface) {
     switch (action.type) {
@@ -35,6 +37,28 @@ function userAndCartReducer(state: userInterface, action: actionInterface) {
             return {
                 ...state,
                 cartItems: state.cartItems.filter((item) => item.id !== action.payload)
+            }
+
+        case userAction.LOGIN:
+            return {
+                ...state,
+                isLoggedIn: true
+
+            }
+        case userAction.LOGOUT:
+            return {
+                ...state,
+                isLoggedIn: false
+            }
+        case userAction.PROFILE:
+            return {
+                ...state,
+                profile: action.payload
+            }
+        case userAction.USER_ORDERS:
+            return {
+                ...state,
+                userOrders: action.payload
             }
         default:
             return state

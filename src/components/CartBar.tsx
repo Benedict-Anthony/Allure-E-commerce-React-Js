@@ -1,12 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useProductContext } from '../contexts/ProductContext'
 import Button from '../shared/Button'
 import { useUserContext } from "../contexts/UserAndCartContext"
 import { FaMinus, FaPlus, FaTrash } from 'react-icons/fa'
 import { AiOutlineClose } from 'react-icons/ai'
-
 import "../css/cartBar.css"
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 
 
@@ -16,6 +15,7 @@ type cartItemType = {
 }
 
 export const CartItems = ({ id, quantity }: cartItemType) => {
+
     const { data: { products } } = useProductContext()
     const { increaseCartQuantity, decreaseCartQuantity, removeItemFromCart } = useUserContext()
     const item = products.find((item) => item.id === id || null)
@@ -47,12 +47,20 @@ export const CartItems = ({ id, quantity }: cartItemType) => {
 
 }
 const CartBar = () => {
+    const { cartItems } = useUserContext()
+    const { data: { products } } = useProductContext()
+    const location = useLocation()
+
     function removeBar() {
         document.querySelector(".close-cart")?.addEventListener("click", () => {
             document.querySelector(".cart-bar")?.classList.remove("active")
         })
     }
-    const { cartItems } = useUserContext()
+
+    useEffect(() => {
+        document.querySelector(".cart-bar")?.classList.remove("active")
+
+    }, [location])
     return (
         <section className="cart-bar">
             <div className="close-cart" onClick={removeBar}><AiOutlineClose /></div>
@@ -60,10 +68,23 @@ const CartBar = () => {
                 cartItems.map((item) => (
                     <CartItems key={item.id} {...item} />
                 ))
+
             ) : (
                 <h1 className="cart-empty">Cart is empty. </h1>
             )}
 
+            {cartItems.length > 0 && (
+                <div className="cart_price_total">
+                    Total:
+                    <span>
+                        {cartItems.reduce((total, item) => {
+                            const product = products.find((i) => i.id === item.id)
+
+                            return total + ((product?.product_price as number) * item.quantity)
+                        }, 0).toLocaleString()}
+                    </span>
+                </div>
+            )}
             {cartItems.length > 0 && (
                 <Button type='button'>
                     <Link to="/check-out">Check Out</Link>
