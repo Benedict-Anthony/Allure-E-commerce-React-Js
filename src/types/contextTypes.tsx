@@ -1,5 +1,5 @@
 import { ReactNode } from "react"
-import { initialBlogInterface, initialProductInterface, orderedItems, profileTypes, service } from "./reducerTypes"
+import { bookings, initialBlogInterface, initialProductInterface, orderedItems, profileTypes, service } from "./reducerTypes"
 
 export interface childrenProps {
     children: ReactNode
@@ -32,12 +32,14 @@ export interface userAndCartContextInterface {
     cartItems: items[]
     profile: profileTypes
     userOrders: orderedItems[]
+    userBookings: bookings[]
     loginUser: (token: token) => void
     logOutUser: () => void
     isAuthenticated: () => void
     isNotAuthenticated: () => void
     setUserProfile: () => void
     getUserOrders: () => void
+    getUserBookings: () => void
     getCartQuantity: (id: number) => number
     addToCart: (id: number) => void
     increaseCartQuantity: (id: number) => void
@@ -54,5 +56,5 @@ export interface ServicesContextInterface {
     serviceDetail: service[]
     service: service
     fecthServiceDetail: (slug: string) => void
-    bookService:(slug:string, book:string) => void
+    bookService: (slug: string, book: string) => void
 }

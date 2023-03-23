@@ -1,6 +1,7 @@
 import React from 'react'
 import { service } from '../types/reducerTypes'
 import { Link } from 'react-router-dom'
+import Button from '../shared/Button'
 
 
 const ServiceCategory = ({ id, name, description, slug, image }: service) => {
@@ -14,7 +15,9 @@ const ServiceCategory = ({ id, name, description, slug, image }: service) => {
                 <p>{description}</p>
             </div>
             <div className="overlay">
-                <Link to={`/services/${slug}`}>Details</Link>
+                <Button type="button">
+                    <Link to={`/services/${slug}`}>Details</Link>
+                </Button>
             </div>
         </article>
     )

@@ -2,6 +2,7 @@ import React from 'react'
 import { service } from '../types/reducerTypes'
 import { Link } from 'react-router-dom'
 import "../css/service.css"
+import Button from '../shared/Button'
 
 
 const Service = ({ id, name, description, slug, image, params }: service | any) => {
@@ -15,7 +16,9 @@ const Service = ({ id, name, description, slug, image, params }: service | any) 
                 <p>{description}</p>
             </div>
             <div className="overlay">
-                <Link to={`/services/${params}/book/${slug}`}>Book {name}</Link>
+                <Button type="button">
+                    <Link to={`/services/${params}/book/${slug}`}>Book {name}</Link>
+                </Button>
             </div>
         </article>
     )

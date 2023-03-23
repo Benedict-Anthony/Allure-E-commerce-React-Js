@@ -60,6 +60,7 @@ interface items {
 }
 
 export interface profileTypes {
+    data?: null
     user?: {
         email?: string
         name?: string
@@ -100,13 +101,23 @@ export type orderedItems = {
     customer: string
 }
 
+
+export interface bookings {
+    id?: string
+    service?: {
+        name?: string
+    }
+    date?: string
+    location: string
+    status: string
+}
 export interface userInterface {
     isLoggedIn: boolean
     cartItems: items[]
     userOrders: orderedItems[]
     profile: profileTypes
+    userbookings: bookings[]
 }
-
 
 export interface service {
     id?: string

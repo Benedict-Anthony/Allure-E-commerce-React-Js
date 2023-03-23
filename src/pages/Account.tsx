@@ -5,7 +5,7 @@ import Address from '../components/Address'
 import Reviews from '../components/Reviews'
 import Settings from '../components/Settings'
 import { useUserContext } from '../contexts/UserAndCartContext'
-
+import Bookings from '../components/Bookings'
 
 
 const Account = () => {
@@ -22,6 +22,7 @@ const Account = () => {
                 address={Address}
                 reviews={Reviews}
                 setttings={Settings}
+                bookings={Bookings}
             />
         </main>
     )
