@@ -9,7 +9,7 @@ import GoogleAuth from "../oauth/GoogleAuth"
 import { useUserContext } from '../contexts/UserAndCartContext';
 import useError from '../hooks/useError';
 import Alert from '../shared/Alert';
-
+import { FormLoadingSpiner, FecthLoadingSpiner } from '../shared/Spinner';
 
 const Login = () => {
   const { handleAccount, reset, loginData } = useForm("")
@@ -56,6 +56,7 @@ const Login = () => {
   }, []) // eslint-disable-line
   return (
     <section className='container section'>
+      <FormLoadingSpiner />
       <main className="login">
         <form action="" className='form' onSubmit={handleSubmit}>
           <h3>Login to continue</h3>

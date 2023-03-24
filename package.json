@@ -19,6 +19,7 @@
     "react-dropzone": "^14.2.3",
     "react-facebook": "^9.0.12",
     "react-icons": "^4.4.0",
+    "react-loader-spinner": "^5.3.4",
     "react-router-dom": "^6.4.0",
     "react-scripts": "5.0.1",
     "react-toastify": "^9.1.1",
