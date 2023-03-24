@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from "react"
+import { useUserContext } from "../contexts/UserAndCartContext"
 
 type formDataType = {
     state: string
@@ -6,17 +7,17 @@ type formDataType = {
     town: string
     street: string
     description: string
-    avatar: string
 
 }
-const useAddressForm = (value: string) => {
+const useAddressForm = () => {
+    const { profile } = useUserContext()
+    const { address } = profile
     const [addressData, setAddressFormData] = useState<formDataType>({
-        state: value,
-        city: value,
-        town: value,
-        street: value,
-        description: value,
-        avatar: ""
+        state: address?.state as string,
+        city: address?.city as string,
+        town: address?.town as string,
+        street: address?.street as string,
+        description: address?.description as string,
 
 
     })
@@ -28,7 +29,6 @@ const useAddressForm = (value: string) => {
             street: "",
             town: "",
             description: "",
-            avatar: ""
         })
     }
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
