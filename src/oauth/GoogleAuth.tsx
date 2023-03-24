@@ -1,12 +1,13 @@
 import React from 'react'
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
+import { useUserContext } from '../contexts/UserAndCartContext';
 
 
 const GoogleAuth = () => {
+    const { loginUser } = useUserContext()
     const registerOrgetUser = async (data: any) => {
-
-        const user = await fetch(`http://127.0.0.1:8000/api/user/google/`, {
+        const response = await fetch(`http://127.0.0.1:8000/api/user/google/`, {
             headers: {
                 "Content-Type": "application/json"
             },
@@ -14,27 +15,30 @@ const GoogleAuth = () => {
             body: JSON.stringify(data)
         })
 
-        if (user.status === 200 || user.status === 201 || user.statusText
+        if (response.status === 200 || response.status === 201 || response.statusText
             === "OK") {
-            const verifiedUser = await fetch(`http://127.0.0.1:8000/api/auth/token`, {
+            const response = await fetch(`http://127.0.0.1:8000/api/token/`, {
                 headers: {
                     "Content-Type": "application/json"
                 },
                 method: "POST",
                 body: JSON.stringify({
-                    username: data.email,
+                    email: data.email,
                     password: data.sub,
-                    grant_type: "password",
-                    client_id: "yYXfWBQdFkrdbtBbED39awes1x2angCogJoiLwzB",
-                    client_secret: "CTNdEEIWndZlFqK0eSvB5iA8NzvhNx5WH6PBdxguexLpZ9NWk5ZdT7EgYCe9uKof6npLJG6nFOhh5tu2Mv9uOQm6IIwqUENaXuK4Grxr1KR53EZxrArA2UlC49P2ZvUS",
                 })
             })
 
-            const activeUser = await verifiedUser.json()
-            console.log(activeUser)
+            if (response.status === 200 || response.status === 201) {
+                const activeUser = await response.json()
+                console.log(activeUser)
+                loginUser(activeUser)
+            }
 
         }
     }
+
+
+
     const clientId = process.env.REACT_APP_GOOGL_APP_ID as string;
     function handleSuccess(response: any) {
         const data = jwt_decode(response.credential)

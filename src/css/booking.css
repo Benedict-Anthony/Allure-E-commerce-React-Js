@@ -1,0 +1,111 @@
+.booking_form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--primary-color);
+    padding: 10px 15px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.booking_form .form-group {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+    margin: 3px 0;
+}
+
+.booking_form .form-group label {
+    font-size: 20px;
+    color: var(--secondary-color);
+}
+
+.booking_form .form-group input[type="text"],
+.booking_form .form-group textarea {
+    width: 100%;
+    border-radius: 5px;
+    outline: 0;
+    border: 0;
+    font-size: inherit;
+}
+
+.heading {
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+
+.heading span {
+    text-transform: capitalize;
+    text-decoration: underline;
+}
+
+.booking_form .form-group input[type="text"] {
+    padding: 10px 6px;
+}
+
+.booking_form .form-group textarea {
+    padding: 4px;
+    height: 100px;
+    overflow: hidden;
+}
+
+.booking_form .form-group input[type="date"] {
+    width: 200px;
+    padding: 10px 13px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+
+/* BOOKINGS STYLES */
+
+.bookings {
+    width: 100%;
+}
+
+.bookings article {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 10px;
+    row-gap: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.bookings article .desc h3 {
+    font-size: 1.3rem;
+    color: var(--secondary-color);
+    padding: 3px 0;
+    text-transform: capitalize;
+}
+
+.bookings article .desc p {
+    font-size: 1rem;
+    color: var(--secondary-color);
+}
+
+.bookings article p {
+    font-size: .9rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+
+
+@media(max-width:600px) {
+    .booking_form {
+        width: 100%
+    }
+
+    .booking_form .form-group input[type="date"] {
+        width: 100%;
+    }
+}

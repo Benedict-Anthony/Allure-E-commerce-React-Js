@@ -24,17 +24,34 @@ const sendToServer = async (body: any, onSuccess: () => void, onError: () => voi
 }
 export default sendToServer
 
-export const sendUserData = async (url: string,  body:any) => { 
+export const sendUserData = async (url: string,  body:any,  method?:string, contentType?:string,) => { 
     const token = JSON.parse(localStorage.getItem("token") as any)
     const config = {
-        method:"POST",
+        method: method ? method : "POST",
+        headers: {
+            "Authorization":`Bearer ${token.access}`
+        },
+        body:body
+    }
+    const response = await fetch(`http://127.0.0.1:8000/api/${url}/`, config)
+
+    return response
+}
+
+
+export const updateAccount = async (  body:any) => { 
+    const token = JSON.parse(localStorage.getItem("token") as any)
+    const config = {
+        method: "PATCH",
         headers: {
             "Content-Type": "application/json",
+
             "Authorization":`Bearer ${token.access}`
         },
         body:JSON.stringify(body)
     }
-    const response = await fetch(`http://127.0.0.1:8000/api/${url}/`, config)
+           const response = await fetch("http://127.0.0.1:8000/api/user/create/", config)
+
 
     return response
 }

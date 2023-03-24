@@ -55,8 +55,8 @@
 
 .services article .overlay {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -100px;
+    left: 100%;
     width: 100%;
     height: 100%;
     background-color: var(--primary-color);
@@ -67,16 +67,23 @@
     border-radius: 10px;
 }
 
+.services .overlay button {
+    width: 150px;
+    border-radius: 10px;
+}
+
 .services article .overlay a {
     font-size: 1.4rem;
     color: var(--secondary-color);
-    text-decoration: underline;
+    /* text-decoration: underline; */
     letter-spacing: .1em;
 }
 
 .services article:hover>.overlay {
-    opacity: .9;
+    opacity: 1;
     cursor: pointer;
+    left: 0;
+    top: 0;
 }
 
 @media(max-width:480px) {

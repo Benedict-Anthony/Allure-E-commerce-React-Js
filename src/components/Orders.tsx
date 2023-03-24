@@ -72,7 +72,7 @@ const Orders = () => {
                                 <img src={"http://127.0.0.1:8000" + order.order.product.image_url} alt="" />
 
                             </article>
-                        )) : <h1>No pending orders</h1>}
+                        )) : <h1>No Pending Orders</h1>}
                     </div>) :
                     orderStatus === "sent" && (
                         <div className="order_status_details">
@@ -96,7 +96,7 @@ const Orders = () => {
                                     <img src={"http://127.0.0.1:8000" + order.order.product.image_url} alt="" />
 
                                 </article>
-                            )) : <h1>No sent orders</h1>}
+                            )) : <h1>No Sent Orders</h1>}
                         </div>)}
 
         </>

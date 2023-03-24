@@ -21,7 +21,8 @@ export const UserAndCartContextProvider = ({ children }: childrenProps) => {
         isLoggedIn: JSON.parse(localStorage.getItem("isLoggedIn") as any) || false,
         cartItems: JSON.parse(localStorage.getItem("cartItems") as any) || [],
         profile: {},
-        userOrders: []
+        userOrders: [],
+        userbookings: []
     }
 
     const [state, dispatch] = useReducer(userAndCartReducer, initialState)
@@ -41,11 +42,20 @@ export const UserAndCartContextProvider = ({ children }: childrenProps) => {
         const response = await fetchUserData("user/orders", "GET")
         if (response.status === 200) {
             const data = await response.json()
+            console.log(data)
             dispatch({ type: userAction.USER_ORDERS, payload: data })
         } else {
         }
     }
 
+    const getUserBookings = async () => {
+        const response = await fetchUserData("services/book", "GET")
+
+        if (response.status === 200) {
+            const data = await response.json()
+            dispatch({ type: userAction.USER_BOOKINGS, payload: data })
+        }
+    }
 
     // LOGIN USER
     const loginUser = (token: token) => {
@@ -139,12 +149,14 @@ export const UserAndCartContextProvider = ({ children }: childrenProps) => {
             cartItems: state.cartItems,
             profile: state.profile,
             userOrders: state.userOrders,
+            userBookings: state.userbookings,
             loginUser,
             logOutUser,
             isAuthenticated,
             isNotAuthenticated,
             setUserProfile,
             getUserOrders,
+            getUserBookings,
             getCartQuantity,
             addToCart,
             increaseCartQuantity,

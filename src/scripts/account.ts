@@ -13,9 +13,9 @@ export const accounts = [
     },
     {
         id: 3,
-        component: "payment method",
-        state:"payment",
-        description:"payment methods you have used"
+        component: "Bookings",
+        state:"bookings",
+        description:"your list of bookings"
     },
     {
         id: 4,

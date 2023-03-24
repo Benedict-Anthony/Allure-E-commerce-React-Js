@@ -10,6 +10,7 @@ export const userAction = {
     LOGOUT: "LOGOUT",
     PROFILE: "PROFILE",
     USER_ORDERS: "USERORDERS",
+    USER_BOOKINGS: "USER_BOOKINGS"
 }
 function userAndCartReducer(state: userInterface, action: actionInterface) {
     switch (action.type) {
@@ -59,6 +60,11 @@ function userAndCartReducer(state: userInterface, action: actionInterface) {
             return {
                 ...state,
                 userOrders: action.payload
+            }
+        case userAction.USER_BOOKINGS:
+            return {
+                ...state,
+                userbookings: action.payload
             }
         default:
             return state

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { ChangeEvent, FormEvent, useContext, useEffect, useState } from 'react'
 import { CartItems } from '../components/CartBar'
 import { useUserContext } from '../contexts/UserAndCartContext'
 import { FaChevronCircleLeft } from "react-icons/fa"
@@ -12,12 +12,24 @@ import ProductContext from '../contexts/ProductContext'
 const CheckOut = () => {
     const { data: { products } } = useContext(ProductContext)
 
-    const { cartItems, isNotAuthenticated } = useUserContext()
-    const handleSubmit = () => {
-        console.log(1234)
+    const { cartItems, isNotAuthenticated, profile: { address } } = useUserContext()
+    const [deliveryAdress, setDeliveryAdress] = useState({
+        state: address?.state,
+        city: address?.city,
+        town: address?.town,
+        street: address?.street,
+        description: address?.description
+
+    })
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        console.log(deliveryAdress)
     }
-    const handleChange = () => {
-        console.log(123)
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setDeliveryAdress({
+            ...deliveryAdress,
+            [e.target.name]: e.target.value
+        })
     }
 
     const showForm = () => {
@@ -47,26 +59,26 @@ const CheckOut = () => {
                 <div className="w-50">
                     <div className="form-group">
                         <label htmlFor="" >State</label>
-                        <input type="text" placeholder='e.g Edo state' name="state" onChange={handleChange} />
+                        <input type="text" placeholder='e.g Edo state' name="state" onChange={handleChange} value={deliveryAdress.state} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="">city</label>
-                        <input type="text" placeholder='e.g Benin city' name='city' onChange={handleChange} />
+                        <label htmlFor="">City</label>
+                        <input type="text" placeholder='e.g Benin city' name='city' onChange={handleChange} value={deliveryAdress.city} />
                     </div>
                 </div>
                 <div className="w-50">
                     <div className="form-group">
-                        <label htmlFor="">street</label>
-                        <input type="text" placeholder='june 12 lain' name='street' onChange={handleChange} />
+                        <label htmlFor="">Ttreet</label>
+                        <input type="text" placeholder='june 12 lain' name='street' onChange={handleChange} value={deliveryAdress.street} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="">phone</label>
-                        <input type="text" placeholder='+234 90 6494  1998' name='phone' onChange={handleChange} />
+                        <label htmlFor="">Town</label>
+                        <input type="text" placeholder='uniben' name='town' onChange={handleChange} value={deliveryAdress.town} />
                     </div></div>
                 <div className="w-100">
                     <label htmlFor="">Description</label>
 
-                    <textarea name="description" id="description" placeholder='e.g hall 4 hostel, uniben opp.....'></textarea>
+                    <textarea name="description" id="description" placeholder='e.g hall 4 hostel, uniben opp.....' value={deliveryAdress.description} onChange={handleChange} ></textarea>
                 </div>
                 <Button type='submit'>Submit</Button>
 

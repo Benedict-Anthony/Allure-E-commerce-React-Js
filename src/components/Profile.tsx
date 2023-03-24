@@ -14,11 +14,12 @@ type profileProps = {
     address: ComponentType
     reviews: ComponentType
     setttings: ComponentType
+    bookings: ComponentType
 }
 
 type componentType = "orders" | "address" | "payment" | "settings" | 'reviews' | string
 
-const Profile = ({ orders: Orders, address: Address, reviews: Reviews, setttings: Settings }: profileProps) => {
+const Profile = ({ orders: Orders, address: Address, reviews: Reviews, setttings: Settings, bookings: Bookings }: profileProps) => {
     const [activeComponent, setActiveComponent] = useState<componentType>("orders")
     const { profile, setUserProfile, getUserOrders } = useUserContext()
 
@@ -34,7 +35,7 @@ const Profile = ({ orders: Orders, address: Address, reviews: Reviews, setttings
 
     useEffect(() => {
         setUserProfile()
-        if (!profile) {
+        if (profile.data === null) {
             handleComponentState("settings")
         }
 
@@ -81,7 +82,7 @@ const Profile = ({ orders: Orders, address: Address, reviews: Reviews, setttings
                         <Orders /> : activeComponent === "address"
                             ? <Address /> : activeComponent === "reviews"
                                 ? <Reviews /> : activeComponent === "settings" ?
-                                    <Settings /> : null}
+                                    <Settings /> : activeComponent === "bookings" ? <Bookings /> : null}
 
                 </div>
             </section>
