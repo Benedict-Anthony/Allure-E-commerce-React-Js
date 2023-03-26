@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { FaMinus, FaPlus, FaStar, FaTrash } from 'react-icons/fa'
+import { FaMinus, FaPlus, FaTrash } from 'react-icons/fa'
 import { useParams } from 'react-router-dom'
 import ProductContext from '../contexts/ProductContext'
 import Button from '../shared/Button'
@@ -7,9 +7,15 @@ import Card from '../shared/Card'
 import Product from '../shared/Product'
 import { productInterface } from '../types/reducerTypes'
 import { useUserContext } from '../contexts/UserAndCartContext'
+import { FecthLoadingSpiner } from '../shared/Spinner'
+import { motion } from "framer-motion"
+import { PageFadeInOut, PageYVariant } from '../shared/motion'
+import ReactStars from "react-stars";
+// import ReactStars from "react-rating-stars-component"
+
 
 const ProductDetail = () => {
-  const { getSingleProduct, data: { product, rltd } } = useContext(ProductContext)
+  const { getSingleProduct, data: { product, rltd, isFetching } } = useContext(ProductContext)
 
   const { getCartQuantity, addToCart, increaseCartQuantity, decreaseCartQuantity, removeItemFromCart } = useUserContext()
 
@@ -24,7 +30,12 @@ const ProductDetail = () => {
     // eslint-disable-next-line 
   }, [params.slug])
   return (
-    <main className="container section">
+    <motion.main className="container section"
+      variants={PageYVariant}
+      initial="initial"
+      animate="animate"
+    >
+      {isFetching && <FecthLoadingSpiner />}
       <div className="wrapper">
         <Card>
           <div className="single__products">
@@ -45,16 +56,22 @@ const ProductDetail = () => {
                 <div className="rating">
                   <h3>Rating</h3>
                   <div className="stars">
-                    <FaStar />
-                    <FaStar />
-                    <FaStar />
+                    <ReactStars
+                      count={5}
+                      size={25}
+                      color1={"#fff"}
+                      color2={"#ffc0cb"}
+                      value={product.rating}
+                    />
                   </div>
                 </div>
               </div>
               <div className="cart">
                 {quantity === 0 ? <Button type="button" hanldleOnclick={() => addToCart(prodID)}>Shop Now</Button> : (
 
-                  <div className='cart_buttons'>
+                  <motion.div className='cart_buttons'
+                    variants={PageFadeInOut}
+                  >
 
                     <div className='cart_buttons_add'>
                       <Button type='button' hanldleOnclick={() => decreaseCartQuantity(prodID)}><FaMinus /></Button>
@@ -62,7 +79,7 @@ const ProductDetail = () => {
                       <Button type='button' hanldleOnclick={() => increaseCartQuantity(prodID)}> <FaPlus /></Button>
                     </div>
                     <Button type='button' hanldleOnclick={() => removeItemFromCart(prodID)}><FaTrash /></Button>
-                  </div>
+                  </motion.div>
                 )}
               </div>
             </div>
@@ -83,7 +100,7 @@ const ProductDetail = () => {
           </section>
         )}
       </div>
-    </main>
+    </motion.main>
   )
 }
 

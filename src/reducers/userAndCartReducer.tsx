@@ -2,6 +2,8 @@ import { actionInterface, userInterface } from "../types/reducerTypes";
 
 
 export const userAction = {
+    START_SPINNING: "START_SPINNING",
+    STOP_SPINNING: "STOP_SPINNING",
     INCREASE_CART_QUANTITY: "INCREASE_CART_QUANTITY",
     DEINCREASE_CART_QUANTITY: "DEINCREASE_CART_QUANTITY",
     ADD_TO_CART: "ADD_TO_CART",
@@ -65,6 +67,17 @@ function userAndCartReducer(state: userInterface, action: actionInterface) {
             return {
                 ...state,
                 userbookings: action.payload
+            }
+        case userAction.START_SPINNING:
+            return {
+                ...state,
+                spinning: true
+            }
+
+        case userAction.STOP_SPINNING:
+            return {
+                ...state,
+                spinning: false
             }
         default:
             return state

@@ -6,7 +6,8 @@ import { FaMinus, FaPlus, FaTrash } from 'react-icons/fa'
 import { AiOutlineClose } from 'react-icons/ai'
 import "../css/cartBar.css"
 import { Link, useLocation } from 'react-router-dom'
-
+import { motion, AnimatePresence } from "framer-motion"
+import { PageFadeInOut } from '../shared/motion'
 
 
 type cartItemType = {
@@ -22,7 +23,11 @@ export const CartItems = ({ id, quantity }: cartItemType) => {
     const itemID = item?.id as number
 
     return (
-        <article className="cart_item">
+        <motion.article className="cart_item"
+            variants={PageFadeInOut}
+            initial="initial"
+            animate="animate"
+            key={id}>
             <div className='cart_image'>
                 <img src={"http://127.0.0.1:8000" + item?.thumbnail_url} alt={item?.name} />
             </div>
@@ -42,7 +47,7 @@ export const CartItems = ({ id, quantity }: cartItemType) => {
                 <p> Price: <span>N{(item?.product_price as number * quantity).toLocaleString()}</span></p>
             </div>
 
-        </article>
+        </motion.article>
     )
 
 }
@@ -64,14 +69,17 @@ const CartBar = () => {
     return (
         <section className="cart-bar">
             <div className="close-cart" onClick={removeBar}><AiOutlineClose /></div>
-            {cartItems.length > 0 ? (
-                cartItems.map((item) => (
-                    <CartItems key={item.id} {...item} />
-                ))
+            <AnimatePresence>
 
-            ) : (
-                <h1 className="cart-empty">Cart is empty. </h1>
-            )}
+                {cartItems.length > 0 ? (
+                    cartItems.map((item) => (
+                        <CartItems key={item.id} {...item} />
+                    ))
+
+                ) : (
+                    <h1 className="cart-empty">Cart is empty. </h1>
+                )}
+            </AnimatePresence>
 
             {cartItems.length > 0 && (
                 <div className="cart_price_total">

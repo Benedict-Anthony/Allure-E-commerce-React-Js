@@ -1,7 +1,9 @@
 // STATES AND REDUCERS INTERFACES
 
+
 // PRODUCT INTERFACE AND CART INTERFACE
 export interface productInterface {
+    rating?: number
     id?: number,
     name?: string,
     product_price?: number,
@@ -112,6 +114,7 @@ export interface bookings {
     status: string
 }
 export interface userInterface {
+    spinning: boolean
     isLoggedIn: boolean
     cartItems: items[]
     userOrders: orderedItems[]

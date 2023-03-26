@@ -4,8 +4,10 @@ import Orders from '../components/Orders'
 import Address from '../components/Address'
 import Reviews from '../components/Reviews'
 import Settings from '../components/Settings'
-import { useUserContext } from '../contexts/UserAndCartContext'
 import Bookings from '../components/Bookings'
+import { useUserContext } from '../contexts/UserAndCartContext'
+import { motion } from "framer-motion"
+import { PageXVariant } from '../shared/motion'
 
 
 const Account = () => {
@@ -16,7 +18,11 @@ const Account = () => {
         isNotAuthenticated()
     }, []) // eslint-disable-line
     return (
-        <main className="container section">
+        <motion.main className="container section"
+            variants={PageXVariant}
+            initial="initial"
+            animate="animate"
+        >
             <Profile
                 orders={Orders}
                 address={Address}
@@ -24,7 +30,7 @@ const Account = () => {
                 setttings={Settings}
                 bookings={Bookings}
             />
-        </main>
+        </motion.main>
     )
 }
 

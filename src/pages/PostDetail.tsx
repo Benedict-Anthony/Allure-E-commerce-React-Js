@@ -4,7 +4,8 @@ import { useParams } from 'react-router-dom';
 import Product from '../shared/Product';
 import ProductContext from '../contexts/ProductContext';
 import { useBlogContext } from '../contexts/BlogContext';
-
+import { motion } from "framer-motion"
+import { PageFadeInOut } from '../shared/motion'
 
 
 const PostDetail = () => {
@@ -21,7 +22,12 @@ const PostDetail = () => {
 
 
     return (
-        <main className="section container posts_detail">
+        
+        <motion.main className="section container posts_detail"
+        variants={PageFadeInOut}
+            initial="initial"
+            animate="animate"
+        >
             <section className="post">
 
                 <div>
@@ -42,7 +48,7 @@ const PostDetail = () => {
                 </div>
             </section>
 
-        </main>
+        </motion.main>
     )
 }
 

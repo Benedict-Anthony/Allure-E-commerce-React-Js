@@ -9,20 +9,41 @@ import useError from '../hooks/useError';
 import FacebookAuth from '../oauth/FacebookAuth';
 import GoogleAuth from '../oauth/GoogleAuth';
 import Modal from '../components/Modal';
-import sendToServer from '../utils/sendData';
 import { useUserContext } from '../contexts/UserAndCartContext';
-
+import { PageYVariant } from '../shared/motion';
+import { motion } from "framer-motion"
+import { FormLoadingSpiner } from '../shared/Spinner';
 
 
 const SignIn = () => {
-  const { isAuthenticated } = useUserContext()
+  const { isAuthenticated, spinning, startSpining, stopSpining } = useUserContext()
   const { formData, handleAccount } = useForm("")
   const { error, handleError, resetError } = useError()
   const [modal, setModal] = useState(false)
-  function signUp() {
-    sendToServer(formData,
-      () => setModal(true),
-      () => handleError("User with this email already exist"))
+  async function signUp(body: any) {
+    window.scrollTo(0, 0)
+    startSpining()
+    const config = {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "POST",
+      body: JSON.stringify(body)
+
+    }
+    const response = await fetch("http://127.0.0.1:8000/api/user/create/", config)
+    if (!response.ok || response.status === 400) {
+      stopSpining()
+      handleError("User with this Email already exist")
+      return;
+    } else {
+      stopSpining()
+      setModal(true)
+      console.log(response)
+    }
+
+
+
   }
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -45,26 +66,33 @@ const SignIn = () => {
       return;
     }
 
-    signUp()
+    signUp(formData)
   }
 
   useEffect(() => {
     isAuthenticated()
   }, []) // eslint-disable-line
   return (
-    <section className='container section'>
+    <section className='container section'
+
+    >
+      {spinning && <FormLoadingSpiner />}
       {modal ? (
         <Modal>
           <h1>Account was created succesfuly.</h1>
           <p>An email was sent to you, click on  link provided in the email to activate your account</p>
-          <p>if having any issue, pleas check your spam folder</p>
+          <p>if having any issue, please check your spam folder</p>
           <Button type='button'> <Link to={"/login"}>OK</Link></Button>
 
 
         </Modal>
       )
         : (
-          <main className="login">
+          <motion.main className="login"
+            variants={PageYVariant}
+            initial="initial"
+            animate="animate"
+          >
             <form action="" className='form' onSubmit={handleSubmit}>
               <h3>Sign in to continue</h3>
               {error.status && <Alert message={error.message} styles={{
@@ -115,7 +143,7 @@ const SignIn = () => {
             <div className="model">
               <img src={loginModel} alt="" />
             </div>
-          </main>
+          </motion.main>
         )}
 
     </section>

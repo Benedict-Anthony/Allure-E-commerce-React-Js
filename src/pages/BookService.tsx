@@ -5,7 +5,8 @@ import "../css/booking.css"
 import { useUserContext } from '../contexts/UserAndCartContext'
 import Button from '../shared/Button'
 import { sendUserData } from '../utils/sendData'
-
+import { motion } from "framer-motion"
+import { PageFadeInOut } from '../shared/motion'
 
 
 const BookService = () => {
@@ -44,7 +45,11 @@ const BookService = () => {
         bookService(params.slug as string, params.book as string)
     }, [params.slug, params.book]) // eslint-disable-line
     return (
-        <section className="section container">
+        <motion.section className="section container"
+            variants={PageFadeInOut}
+            initial="initial"
+            animate="animate"
+        >
             <h1 className="heading">Make a Booking Plan for <span>{service.name}</span></h1>
             <form className="booking_form" onSubmit={handleSubmit}>
                 <div className="form-group">
@@ -65,7 +70,7 @@ const BookService = () => {
                     <Button type="submit">Book Event</Button>
                 </div>
             </form>
-        </section>
+        </motion.section>
     )
 }
 

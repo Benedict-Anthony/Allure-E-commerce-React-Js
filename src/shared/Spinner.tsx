@@ -1,46 +1,32 @@
 import React from 'react'
-import { ColorRing, LineWave, ProgressBar } from 'react-loader-spinner'
+import { LineWave, Puff } from 'react-loader-spinner'
 import "../css/spinner.css"
 
 
 export const FormLoadingSpiner = () => {
     return (
-        <section className="container spinner section">
-            <ColorRing
-                visible={true}
-                height="80"
-                width="80"
-                ariaLabel="blocks-loading"
-                wrapperStyle={{}}
-                wrapperClass="blocks-wrapper"
-                colors={['#ffc0cb', '#1c3825', '#ffc0cb', '#1c3825', '#ffc0cb']}
-            />
-<ProgressBar
-  height="80"
-  width="80"
-  ariaLabel="progress-bar-loading"
-  wrapperStyle={{}}
-  wrapperClass="progress-bar-wrapper"
-  borderColor = '#F4442E'
-  barColor = '#51E5FF'
-/>
+        <section className="spinner">
+            <div className='spinner-card'>
+
+                <Puff
+                    color='#ffc0cb'
+                    secondaryColor='#1c3825'
+                    wrapperClass='spin'
+                />
+            </div>
         </section>
     )
 }
 
 export const FecthLoadingSpiner = () => {
-    return (<section className="container spinner section">
-        <LineWave
-            height="200"
-            width="00"
-            color="#ffc0cb"
-            ariaLabel="line-wave"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
-            firstLineColor=""
-            middleLineColor=""
-            lastLineColor=""
-        />
-    </section>)
+    return (
+        <section className="spinner">
+            <div className="">
+                <LineWave
+                    color='#ffc0cb'
+
+                    wrapperClass='spin2'
+                />
+            </div>
+        </section>)
 }

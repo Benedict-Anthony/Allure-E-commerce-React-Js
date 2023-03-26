@@ -5,9 +5,8 @@ import { FaChevronCircleLeft } from "react-icons/fa"
 import "../css/checkout.css"
 import Button from '../shared/Button'
 import ProductContext from '../contexts/ProductContext'
-
-
-
+import { motion } from "framer-motion"
+import { PageFadeInOut } from '../shared/motion'
 
 const CheckOut = () => {
     const { data: { products } } = useContext(ProductContext)
@@ -51,7 +50,10 @@ const CheckOut = () => {
         removeForm()
     }, []) // eslint-disable-line
     return (
-        <section className='section container  check-out'>
+        <motion.section className='section container  check-out'
+            variants={PageFadeInOut}
+            initial="initial"
+            animate="animate">
             <form action="" className='form' onSubmit={handleSubmit}>
                 <Button type="button" hanldleOnclick={removeForm}><FaChevronCircleLeft /></Button>
                 <h3>Delivery Address</h3>
@@ -104,7 +106,7 @@ const CheckOut = () => {
             </div>
 
             <Button type='button' hanldleOnclick={showForm}>Checkout</Button>
-        </section>
+        </motion.section>
     )
 }
 

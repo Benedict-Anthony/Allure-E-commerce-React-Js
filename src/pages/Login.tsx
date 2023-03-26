@@ -9,12 +9,16 @@ import GoogleAuth from "../oauth/GoogleAuth"
 import { useUserContext } from '../contexts/UserAndCartContext';
 import useError from '../hooks/useError';
 import Alert from '../shared/Alert';
-import { FormLoadingSpiner, FecthLoadingSpiner } from '../shared/Spinner';
+import { FormLoadingSpiner } from '../shared/Spinner';
+import { motion } from "framer-motion"
+import { PageYVariant } from '../shared/motion';
+
+
 
 const Login = () => {
   const { handleAccount, reset, loginData } = useForm("")
   const { error, handleError, resetError } = useError()
-  const { loginUser, isAuthenticated } = useUserContext()
+  const { loginUser, isAuthenticated, stopSpining, startSpining, spinning } = useUserContext()
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -24,6 +28,7 @@ const Login = () => {
       resetError()
       return;
     }
+    startSpining()
     const config = {
       method: "POST",
       headers: {
@@ -39,12 +44,14 @@ const Login = () => {
     const response = await fetch("http://127.0.0.1:8000/api/token/", config)
 
     if (response.status !== 200) {
+      stopSpining()
       handleError("Email or password incorrect")
       resetError()
       return;
     }
     const data = await response.json()
     loginUser(data)
+    stopSpining()
     reset()
   }
 
@@ -54,9 +61,14 @@ const Login = () => {
 
     isAuthenticated()
   }, []) // eslint-disable-line
+
   return (
-    <section className='container section'>
-      <FormLoadingSpiner />
+    <motion.section className='container section'
+      variants={PageYVariant}
+      initial="initial"
+      animate="animate"
+    >
+      {spinning && <FormLoadingSpiner />}
       <main className="login">
         <form action="" className='form' onSubmit={handleSubmit}>
           <h3>Login to continue</h3>
@@ -90,7 +102,7 @@ const Login = () => {
         </div>
       </main>
 
-    </section>
+    </motion.section>
   )
 }
 

@@ -28,11 +28,14 @@ type token = {
     refresh: string
 }
 export interface userAndCartContextInterface {
+    spinning: boolean
     isLoggedIn: boolean
     cartItems: items[]
     profile: profileTypes
     userOrders: orderedItems[]
     userBookings: bookings[]
+    stopSpining: () => void
+    startSpining: () => void
     loginUser: (token: token) => void
     logOutUser: () => void
     isAuthenticated: () => void

@@ -21,11 +21,21 @@ export const UserAndCartContextProvider = ({ children }: childrenProps) => {
         isLoggedIn: JSON.parse(localStorage.getItem("isLoggedIn") as any) || false,
         cartItems: JSON.parse(localStorage.getItem("cartItems") as any) || [],
         profile: {},
+        spinning: false,
         userOrders: [],
         userbookings: []
     }
 
     const [state, dispatch] = useReducer(userAndCartReducer, initialState)
+
+    // SPINNING STATES FUNCS
+
+    const startSpining = () => {
+        dispatch({ type: userAction.START_SPINNING })
+    }
+    const stopSpining = () => {
+        dispatch({ type: userAction.STOP_SPINNING })
+    }
 
     //GET USER DATA
     const setUserProfile = async () => {
@@ -81,6 +91,8 @@ export const UserAndCartContextProvider = ({ children }: childrenProps) => {
         dispatch({ type: userAction.LOGOUT })
         navigate("/")
     }
+
+    // CART FUNCTIONALITIES
 
     const getCartQuantity = (id: number) => {
         const item = state.cartItems.find((item) => item.id === id)
@@ -150,6 +162,9 @@ export const UserAndCartContextProvider = ({ children }: childrenProps) => {
             profile: state.profile,
             userOrders: state.userOrders,
             userBookings: state.userbookings,
+            spinning: state.spinning,
+            startSpining,
+            stopSpining,
             loginUser,
             logOutUser,
             isAuthenticated,

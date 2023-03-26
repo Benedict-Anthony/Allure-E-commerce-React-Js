@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import Modal from '../components/Modal'
 import { Link, useParams } from "react-router-dom"
 import Button from '../shared/Button'
+import { motion } from "framer-motion"
+import { PageFadeInOut } from '../shared/motion'
 
 const Comfirm = () => {
     const params = useParams()
@@ -26,12 +28,19 @@ const Comfirm = () => {
         comfirmUser()
     })
     return (
-        <Modal>
-            <p>your account has be activated sucessfully</p>
-            <Button type='button'>
-                <Link to={"/login"}>OK</Link>
-            </Button>
-        </Modal>
+        <motion.section
+            variants={PageFadeInOut}
+            initial="initial"
+            animate="animate"
+        >
+
+            <Modal>
+                <p>your account has be activated sucessfully</p>
+                <Button type='button'>
+                    <Link to={"/login"}>OK</Link>
+                </Button>
+            </Modal>
+        </motion.section>
     )
 }
 
