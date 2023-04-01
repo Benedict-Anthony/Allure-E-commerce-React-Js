@@ -6,6 +6,7 @@ import { userInterface } from '../types/reducerTypes';
 import { userAction } from '../reducers/userAndCartReducer';
 import { useNavigate } from 'react-router-dom';
 import { fetchUserData } from '../utils/fetchFunc';
+import { toastify } from '../utils/Toastify';
 
 type token = {
     access: string
@@ -59,7 +60,7 @@ export const UserAndCartContextProvider = ({ children }: childrenProps) => {
     }
 
     const getUserBookings = async () => {
-        const response = await fetchUserData("services/book", "GET")
+        const response = await fetchUserData("user/bookings", "GET")
 
         if (response.status === 200) {
             const data = await response.json()
@@ -123,11 +124,13 @@ export const UserAndCartContextProvider = ({ children }: childrenProps) => {
     }
 
     const removeItemFromCart = (id: number) => {
+        toastify("Item removed to Cart")
         dispatch({ type: userAction.REMOVE_TO_CART, payload: id })
     }
 
 
     const addToCart = (id: number) => {
+        toastify("Item added to Cart")
         dispatch({ type: userAction.ADD_TO_CART, payload: id })
     }
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { Navigations } from '../scripts/topNavItems';
 import cart from "../assets/cart.png";
 import "../css/header.css"
@@ -31,7 +31,7 @@ const Header = () => {
           <ul className={`nav_links flex `}>
             {Navigations.map((item) => (
               <li key={item.id}>
-                {item.page ? <Link to={`/${item.to}`}>{item.name}</Link> : <a href={`#${item.to}`}>{item.name}</a>}
+                {item.page ? <NavLink to={`/${item.to}`}>{item.name}</NavLink> : <a href={`#${item.to}`}>{item.name}</a>}
               </li>
             ))}
           </ul>
@@ -39,14 +39,14 @@ const Header = () => {
           <ul className="nav_icons">
             {isLoggedIn ?
               <>
-                <li><Link to={"/account"}><FaUser /></Link></li>
+                <li><NavLink to={"/account"}><FaUser /></NavLink></li>
                 <li><Button type="button" hanldleOnclick={() => logOutUser()}>Logout</Button> </li>
 
               </>
               :
               <>
-                <li><Link to={"login"}>Login</Link></li>
-                <li><Link to={"sign-in"}>Sign Up</Link></li>
+                <li><NavLink to={"login"}>Login</NavLink></li>
+                <li><NavLink to={"sign-in"}>Sign Up</NavLink></li>
               </>
             }
             <div className="cart cart-toggler" onClick={addBar}>

@@ -27,6 +27,22 @@ html {
   scroll-behavior: smooth;
 }
 
+html::-webkit-scrollbar {
+  background-color: var(--black);
+  width: 10px;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--primary-color), var(--secondary-color));
+  border-radius: 10px;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+
+
 body {
   width: 100%;
   background-color: var(--basic);

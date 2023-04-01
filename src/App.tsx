@@ -6,6 +6,8 @@ import { BlogProvider } from './contexts/BlogContext';
 import { UserAndCartContextProvider } from './contexts/UserAndCartContext';
 import { ServicesProvider } from './contexts/ServicesContext';
 import { AnimatePresence } from 'framer-motion';
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 
 import Home from './pages/Home';
@@ -35,6 +37,7 @@ function App() {
             <ServicesProvider>
               <Header />
               <CartBar />
+              <ToastContainer />
               <AnimatePresence exitBeforeEnter>
                 <Routes >
                   <Route path={"/"} element={<Home />} />

@@ -1,3 +1,7 @@
+.bookings {
+    margin-bottom: 600px;
+}
+
 .booking_form {
     display: flex;
     align-items: center;
@@ -74,11 +78,42 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 4px 10px;
+    padding: 10px 15px;
     row-gap: 10px;
     border: 1px solid #ccc;
     margin-bottom: 10px;
+    position: relative;
+    margin-bottom: 40px;
 }
+
+.bookings .booking_btn {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    transform: translateY(-40px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #fff;
+
+}
+
+.bookings .booking_btn button {
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.btn-block button {
+    width: 100px;
+}
+
 
 .bookings article .desc h3 {
     font-size: 1.3rem;

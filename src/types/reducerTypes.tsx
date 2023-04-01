@@ -108,9 +108,12 @@ export interface bookings {
     id?: string
     service?: {
         name?: string
+        id?: string | number
     }
+    slug?: string
     date?: string
     location: string
+    description: string
     status: string
 }
 export interface userInterface {
