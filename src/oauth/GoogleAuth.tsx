@@ -5,8 +5,9 @@ import { useUserContext } from '../contexts/UserAndCartContext';
 
 
 const GoogleAuth = () => {
-    const { loginUser } = useUserContext()
+    const { loginUser, startSpining, stopSpining } = useUserContext()
     const registerOrgetUser = async (data: any) => {
+        startSpining()
         const response = await fetch(`http://127.0.0.1:8000/api/user/google/`, {
             headers: {
                 "Content-Type": "application/json"
@@ -30,8 +31,8 @@ const GoogleAuth = () => {
 
             if (response.status === 200 || response.status === 201) {
                 const activeUser = await response.json()
-                console.log(activeUser)
                 loginUser(activeUser)
+                stopSpining()
             }
 
         }
@@ -43,7 +44,6 @@ const GoogleAuth = () => {
     function handleSuccess(response: any) {
         const data = jwt_decode(response.credential)
         registerOrgetUser(data)
-        console.log(response)
     }
 
     function handleError(error: any) {

@@ -1,38 +1,49 @@
-import React from 'react'
-import { AiOutlineHome, AiOutlineUser } from "react-icons/ai"
-import { BiShoppingBag, BiLogIn } from "react-icons/bi"
+import React, { useEffect } from 'react'
+import { AiOutlineHome } from "react-icons/ai"
+import { BiShoppingBag } from "react-icons/bi"
 import { HiOutlineLogin } from "react-icons/hi"
 import { GrBlog, GrServices } from "react-icons/gr"
-import { Link } from 'react-router-dom'
-
+import { FaUser } from "react-icons/fa"
+import { Link, NavLink } from 'react-router-dom'
 import { useUserContext } from '../contexts/UserAndCartContext'
 
 
 const ButtonNav = () => {
-    const { isLoggedIn, logOutUser } = useUserContext()
-    window.addEventListener("scroll", () => {
-        if (window.scrollY) {
-            document.querySelector(".nav__bottom")?.classList.add("active__nav")
-        } else {
-            document.querySelector(".nav__bottom")?.classList.remove("active__nav")
+    const { isLoggedIn } = useUserContext()
 
+    window.addEventListener("scroll", () => {
+        if (window.scrollY === 0) {
+            document.querySelector(".nav__bottom")?.classList.remove("active__nav")
+            return;
+        } else {
+
+            document.querySelector(".nav__bottom")?.classList.remove("active__nav")
+            setTimeout(() => {
+                document.querySelector(".nav__bottom")?.classList.add("active__nav")
+
+            }, 7000)
         }
+
     })
+
+    useEffect((() => {
+        document.querySelector(".nav__bottom")?.classList.add("active__nav")
+
+    }), [])
     return (
-        <nav className="nav__bottom">
+        <nav className={`nav__bottom `} >
             <ul>
-                <li><Link to={"/"}><AiOutlineHome /></Link></li>
-                <li><Link to={"/shop"}><BiShoppingBag /></Link></li>
-                <li><Link to={"/services"}><GrServices /></Link></li>
-                <li><Link to={"/blog"}><GrBlog /></Link></li>
+                <li><NavLink to={"/"}><AiOutlineHome /> <span>Home</span></NavLink></li>
+                <li><NavLink to={"/shop"}><BiShoppingBag /> <span>shop</span> </NavLink></li>
+                <li><NavLink to={"/services"}><GrServices /> <span>Services</span> </NavLink></li>
+                <li><NavLink to={"/blog"}><GrBlog /> <span>Blog</span> </NavLink></li>
                 {isLoggedIn
                     ?
                     <>
-                        <li><Link to={"/account"}><AiOutlineUser /></Link></li>
-                        <li onClick={() => logOutUser()}><BiLogIn /></li>
+                        <li><NavLink to={"/account"}><FaUser /> <span>Me</span> </NavLink></li>
                     </>
                     :
-                    <li><Link to={"/login"}><HiOutlineLogin /></Link></li>
+                    <li><Link to={"/login"}><HiOutlineLogin />Login</Link></li>
                 }
             </ul>
         </nav>

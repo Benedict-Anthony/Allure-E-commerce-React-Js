@@ -6,6 +6,7 @@ import { userInterface } from '../types/reducerTypes';
 import { userAction } from '../reducers/userAndCartReducer';
 import { useNavigate } from 'react-router-dom';
 import { fetchUserData } from '../utils/fetchFunc';
+import { toastify } from '../utils/Toastify';
 
 type token = {
     access: string
@@ -21,11 +22,21 @@ export const UserAndCartContextProvider = ({ children }: childrenProps) => {
         isLoggedIn: JSON.parse(localStorage.getItem("isLoggedIn") as any) || false,
         cartItems: JSON.parse(localStorage.getItem("cartItems") as any) || [],
         profile: {},
+        spinning: false,
         userOrders: [],
         userbookings: []
     }
 
     const [state, dispatch] = useReducer(userAndCartReducer, initialState)
+
+    // SPINNING STATES FUNCS
+
+    const startSpining = () => {
+        dispatch({ type: userAction.START_SPINNING })
+    }
+    const stopSpining = () => {
+        dispatch({ type: userAction.STOP_SPINNING })
+    }
 
     //GET USER DATA
     const setUserProfile = async () => {
@@ -49,7 +60,7 @@ export const UserAndCartContextProvider = ({ children }: childrenProps) => {
     }
 
     const getUserBookings = async () => {
-        const response = await fetchUserData("services/book", "GET")
+        const response = await fetchUserData("user/bookings", "GET")
 
         if (response.status === 200) {
             const data = await response.json()
@@ -82,6 +93,8 @@ export const UserAndCartContextProvider = ({ children }: childrenProps) => {
         navigate("/")
     }
 
+    // CART FUNCTIONALITIES
+
     const getCartQuantity = (id: number) => {
         const item = state.cartItems.find((item) => item.id === id)
         if (item) {
@@ -111,11 +124,13 @@ export const UserAndCartContextProvider = ({ children }: childrenProps) => {
     }
 
     const removeItemFromCart = (id: number) => {
+        toastify("Item removed from Cart")
         dispatch({ type: userAction.REMOVE_TO_CART, payload: id })
     }
 
 
     const addToCart = (id: number) => {
+        toastify("Item added to Cart")
         dispatch({ type: userAction.ADD_TO_CART, payload: id })
     }
 
@@ -150,6 +165,9 @@ export const UserAndCartContextProvider = ({ children }: childrenProps) => {
             profile: state.profile,
             userOrders: state.userOrders,
             userBookings: state.userbookings,
+            spinning: state.spinning,
+            startSpining,
+            stopSpining,
             loginUser,
             logOutUser,
             isAuthenticated,

@@ -1,28 +1,21 @@
 import React, { FormEvent, useEffect, useState, ChangeEvent } from 'react'
-import { useServicesContext } from '../contexts/ServicesContext'
-import { useNavigate, useParams } from 'react-router-dom'
 import "../css/booking.css"
 import { useUserContext } from '../contexts/UserAndCartContext'
 import Button from '../shared/Button'
 import { bookService as bookserviceFunc } from '../utils/sendData'
 import { motion } from "framer-motion"
 import { PageFadeInOut } from '../shared/motion'
-import { FormLoadingSpiner } from '../shared/Spinner'
+import { bookings } from '../types/reducerTypes'
 import { toastify } from '../utils/Toastify'
-import Head from '../shared/Head'
+import { FormLoadingSpiner } from '../shared/Spinner'
 
 
-
-const BookService = () => {
-    const params = useParams()
-    const navigate = useNavigate()
-    const { service, bookService } = useServicesContext()
-    const { isNotAuthenticated, startSpining, stopSpining, spinning } = useUserContext()
+const UpdateBookService = ({ location, description, date, slug, service }: bookings) => {
+    const { isNotAuthenticated, spinning, startSpining, stopSpining } = useUserContext()
     const [booking, setBooking] = useState({
-        location: "",
-        description: "",
-        date: "",
-        slug: "slug"
+        location: location,
+        description: description,
+        date: date
     })
 
     function handlechnage(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -35,50 +28,38 @@ const BookService = () => {
     async function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault()
         startSpining()
-        console.log(booking)
+
         const data = {
-            service: service.id,
+            service: service?.id,
             location: booking.location,
             description: booking.description,
             date: booking.date,
-            slug: booking.slug
+            slug: "slug"
         }
-        try {
+        const response = await bookserviceFunc(`bookings/${slug}/update`, data, "PUT")
 
-            const response = await bookserviceFunc("bookings", data, "POST")
-            if (response.ok) {
-                toastify("Success. You will recieve an email shortly")
-                stopSpining()
-                navigate("/account")
-
-            } else {
-                throw new Error()
-            }
-        } catch (err) {
-            console.log(err)
+        console.log(response)
+        if (!response.ok) {
+            stopSpining()
+            toastify("Opps, something we wrong...., try again")
+            return;
         }
 
-        // console.log(response)
-        stopSpining()
-
+        window.location.reload()
     }
     useEffect(() => {
         isNotAuthenticated()
     }, []) //eslint-disable-line
-    useEffect(() => {
-        bookService(params.slug as string, params.book as string)
-    }, [params.slug, params.book]) // eslint-disable-line
+
     return (
         <>
-            <Head title={`Book  ${service.name}`} href="/services" description={service.description} keyword={service.name} />
-
             {spinning && <FormLoadingSpiner />}
             <motion.section className="section container"
                 variants={PageFadeInOut}
                 initial="initial"
                 animate="animate"
             >
-                <h1 className="heading">Make a Booking Plan for <span>{service.name}</span></h1>
+                <h1 className="heading">Update Your Booking </h1>
                 <form className="booking_form" onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="location">Location</label>
@@ -104,4 +85,4 @@ const BookService = () => {
     )
 }
 
-export default BookService
+export default UpdateBookService

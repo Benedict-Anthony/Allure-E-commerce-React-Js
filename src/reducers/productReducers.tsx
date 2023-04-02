@@ -2,7 +2,8 @@ import { actionInterface, initialProductInterface } from "../types/reducerTypes"
 import { LessonType } from "./BlogReducer";
 export const ProductType = {
     LOAD_PRODUCTS: "LOAD_PRODUCTS",
-    LOAD_PRODUCT_DETAIL: "LOAD_PRODUCT_DATAIL"
+    LOAD_PRODUCT_DETAIL: "LOAD_PRODUCT_DATAIL",
+    FECTHING: "FETCHING"
 }
 export const productReducer = (state: initialProductInterface, action: actionInterface) => {
     switch (action.type) {
@@ -22,6 +23,11 @@ export const productReducer = (state: initialProductInterface, action: actionInt
             return {
                 ...state,
                 blogAssets: action.others
+            }
+        case ProductType.FECTHING:
+            return {
+                ...state,
+                isFetching: action.payload
             }
         default:
             return state

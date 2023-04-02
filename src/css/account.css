@@ -202,12 +202,6 @@
 
 
 
-
-
-
-
-
-
 @media(max-width:768px) {
     .account .account__profile aside {
         width: 100%;
@@ -215,9 +209,10 @@
 
     .account__summary {
         padding: 0 10px;
+        overflow: scroll;
         position: absolute;
         top: 40px;
-        min-height: calc(100vh + 30px);
+        height: calc(100vh + 500px);
         right: calc(100% + 50px);
         width: 100%;
         background-color: var(--basic);
@@ -225,7 +220,7 @@
 
     .account__summary .login {
         padding: 0;
-        margin-top: 0;
+        margin-top: 10px;
     }
 
     .account__summary.show {
@@ -249,5 +244,22 @@
         column-gap: 10px;
         margin-bottom: 20px;
 
+    }
+
+
+    .account .account__profile div h1 {
+        font-size: 1.2rem;
+        padding: 5px 0;
+        color: var(--secondary-color);
+        font-weight: 600;
+    }
+
+    .account .account__profile div p {
+        font-size: 14px;
+        color: var(--secondary-color);
+    }
+
+    .account .account__profile aside {
+        width: 100%;
     }
 }

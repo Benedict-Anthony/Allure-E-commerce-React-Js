@@ -6,7 +6,8 @@ import "../css/products.css"
 import { Link } from 'react-router-dom'
 import { FaPlus, FaMinus, FaTrash } from "react-icons/fa"
 import { useUserContext } from '../contexts/UserAndCartContext'
-
+import { motion, AnimatePresence } from "framer-motion"
+import { PageFadeInOut } from '../shared/motion'
 
 type Item = {
   item: productInterface | any
@@ -37,19 +38,31 @@ const Product = ({ item }: Item) => {
         </div>
         <Link className='btn' to={`/product/${item.slug}`}>View</Link>
         <h3 className="cart_quantity">{quantity > 0 && quantity}</h3>
+        <AnimatePresence>
+          <motion.div
+            variants={PageFadeInOut}
+            initial="initial"
+            animate="animate">
 
-        {quantity === 0 ? <Button type="button" hanldleOnclick={() => addToCart(item.id)}>Shop Now</Button> : (
+            {quantity === 0 ? <Button type="button" hanldleOnclick={() => addToCart(item.id)}>Shop Now</Button> : (
 
-          <div className='cart_buttons'>
+              <motion.div className='cart_buttons'
+                variants={PageFadeInOut}
+                initial="initial"
+                animate="animate"
+              >
 
-            <div className='cart_buttons_add'>
-              <Button type='button' hanldleOnclick={() => decreaseCartQuantity(item.id)}><FaMinus /></Button>
+                <motion.div className='cart_buttons_add'
+                >
+                  <Button type='button' hanldleOnclick={() => decreaseCartQuantity(item.id)}><FaMinus /></Button>
 
-              <Button type='button' hanldleOnclick={() => increaseCartQuantity(item.id)}> <FaPlus /></Button>
-            </div>
-            <Button type='button' hanldleOnclick={() => removeItemFromCart(item.id)}> <FaTrash /></Button>
-          </div>
-        )}
+                  <Button type='button' hanldleOnclick={() => increaseCartQuantity(item.id)}> <FaPlus /></Button>
+                </motion.div>
+                <Button type='button' hanldleOnclick={() => removeItemFromCart(item.id)}> <FaTrash /></Button>
+              </motion.div>
+            )}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </Card>
 
