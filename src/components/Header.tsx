@@ -45,8 +45,8 @@ const Header = () => {
               </>
               :
               <>
-                <li><NavLink to={"login"}>Login</NavLink></li>
-                <li><NavLink to={"sign-in"}>Sign Up</NavLink></li>
+                <li><NavLink to={"login"}><Button type="button">Login</Button></NavLink></li>
+                <li><NavLink to={"sign-in"}><Button type="button">Sign Up</Button></NavLink></li>
               </>
             }
             <div className="cart cart-toggler" onClick={addBar}>

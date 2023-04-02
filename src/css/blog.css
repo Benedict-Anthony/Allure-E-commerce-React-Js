@@ -40,6 +40,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    gap: 20px;
 }
 
 .post div {
@@ -49,22 +50,27 @@
 .post h2 {
     font-size: 20px;
     font-weight: 600;
+    text-transform: capitalize;
 }
 
 .post p {
     font-size: 18px;
-    line-height: 1.3em;
+    line-height: 1.5em;
     margin-top: 10px;
     color: var(--secondary-color);
 }
 
 .posts_detail img {
-    width: 100%;
+    width: 60%;
 }
 
 @media(max-width:500px) {
     .grid-3 {
         grid-template-columns: 1fr;
+    }
+
+    .posts_detail img {
+        width: 100%;
     }
 }
 
@@ -72,5 +78,6 @@
 @media(max-width:700px) {
     .post {
         flex-direction: column-reverse;
+        gap: 0;
     }
 }

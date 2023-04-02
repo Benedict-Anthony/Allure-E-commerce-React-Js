@@ -124,7 +124,7 @@ export const UserAndCartContextProvider = ({ children }: childrenProps) => {
     }
 
     const removeItemFromCart = (id: number) => {
-        toastify("Item removed to Cart")
+        toastify("Item removed from Cart")
         dispatch({ type: userAction.REMOVE_TO_CART, payload: id })
     }
 

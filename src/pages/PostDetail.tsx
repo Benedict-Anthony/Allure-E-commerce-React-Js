@@ -7,7 +7,7 @@ import { useBlogContext } from '../contexts/BlogContext';
 import { motion } from "framer-motion"
 import { PageFadeInOut } from '../shared/motion'
 import Head from '../shared/Head';
-
+import "../css/blog.css"
 
 const PostDetail = () => {
     const params = useParams()
@@ -24,7 +24,7 @@ const PostDetail = () => {
 
     return (
         <>
-            <Head title={""+post.title+""} href='/login' description={post.title} />
+            <Head title={"" + post.title + ""} href='/login' description={post.title} />
 
             <motion.main className="section container posts_detail"
                 variants={PageFadeInOut}
