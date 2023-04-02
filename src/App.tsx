@@ -38,7 +38,7 @@ function App() {
               <Header />
               <CartBar />
               <ToastContainer />
-              <AnimatePresence exitBeforeEnter>
+              <AnimatePresence>
                 <Routes >
                   <Route path={"/"} element={<Home />} />
                   <Route path='/login' element={<Login />} />

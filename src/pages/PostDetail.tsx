@@ -6,6 +6,7 @@ import ProductContext from '../contexts/ProductContext';
 import { useBlogContext } from '../contexts/BlogContext';
 import { motion } from "framer-motion"
 import { PageFadeInOut } from '../shared/motion'
+import Head from '../shared/Head';
 
 
 const PostDetail = () => {
@@ -22,33 +23,36 @@ const PostDetail = () => {
 
 
     return (
-        
-        <motion.main className="section container posts_detail"
-        variants={PageFadeInOut}
-            initial="initial"
-            animate="animate"
-        >
-            <section className="post">
+        <>
+            <Head title={""+post.title+""} href='/login' description={post.title} />
 
-                <div>
-                    <h2>{post.title}</h2>
-                    <p>{post.description}</p>
-                </div>
-                <div>
-                    <img src={`http://127.0.0.1:8000${post.image_url}`} alt="" />
-                </div>
-            </section>
+            <motion.main className="section container posts_detail"
+                variants={PageFadeInOut}
+                initial="initial"
+                animate="animate"
+            >
+                <section className="post">
 
-            <section className="section">
+                    <div>
+                        <h2>{post.title}</h2>
+                        <p>{post.description}</p>
+                    </div>
+                    <div>
+                        <img src={`http://127.0.0.1:8000${post.image_url}`} alt="" />
+                    </div>
+                </section>
 
-                <div className="grid">
-                    {blogAssets.length > 0 && blogAssets.map((asset) => (
-                        <Product item={asset} key={asset.id} />
-                    ))}
-                </div>
-            </section>
+                <section className="section">
 
-        </motion.main>
+                    <div className="grid">
+                        {blogAssets.length > 0 && blogAssets.map((asset) => (
+                            <Product item={asset} key={asset.id} />
+                        ))}
+                    </div>
+                </section>
+
+            </motion.main>
+        </>
     )
 }
 

@@ -11,6 +11,7 @@ import { FecthLoadingSpiner } from '../shared/Spinner'
 import { motion } from "framer-motion"
 import { PageFadeInOut, PageYVariant } from '../shared/motion'
 import ReactStars from "react-stars";
+import Head from '../shared/Head'
 // import ReactStars from "react-rating-stars-component"
 
 
@@ -30,77 +31,81 @@ const ProductDetail = () => {
     // eslint-disable-next-line 
   }, [params.slug])
   return (
-    <motion.main className="container section"
-      variants={PageYVariant}
-      initial="initial"
-      animate="animate"
-    >
-      {isFetching && <FecthLoadingSpiner />}
-      <div className="wrapper">
-        <Card>
-          <div className="single__products">
-            <h3 className="cart_quantity"> {quantity > 0 && quantity}</h3>
-            <div className="image">
-              <img src={"http://127.0.0.1:8000" + product.image_url} alt="" />
-            </div>
-            <div className="info">
-              <div className="info__text">
-                <h2>{product.name?.toUpperCase()}</h2>
-                <p>{product.description}</p>
+    <>
+      <Head title={"" + product.name + ""} href={`product/${product.name}`} description={product.description} />
+
+      <motion.main className="container section"
+        variants={PageYVariant}
+        initial="initial"
+        animate="animate"
+      >
+        {isFetching && <FecthLoadingSpiner />}
+        <div className="wrapper">
+          <Card>
+            <div className="single__products">
+              <h3 className="cart_quantity"> {quantity > 0 && quantity}</h3>
+              <div className="image">
+                <img src={"http://127.0.0.1:8000" + product.image_url} alt="" />
               </div>
-              <div className="info__price">
-                <p>N{product.product_price}</p>
-                {product.product_discount ? product.product_discount > 0 ?
-                  <span className="strike">N{product.price}</span> : null
-                  : null}
-                <div className="rating">
-                  <h3>Rating</h3>
-                  <div className="stars">
-                    <ReactStars
-                      count={5}
-                      size={25}
-                      color1={"#fff"}
-                      color2={"#ffc0cb"}
-                      value={product.rating}
-                    />
+              <div className="info">
+                <div className="info__text">
+                  <h2>{product.name?.toUpperCase()}</h2>
+                  <p>{product.description}</p>
+                </div>
+                <div className="info__price">
+                  <p>N{product.product_price}</p>
+                  {product.product_discount ? product.product_discount > 0 ?
+                    <span className="strike">N{product.price}</span> : null
+                    : null}
+                  <div className="rating">
+                    <h3>Rating</h3>
+                    <div className="stars">
+                      <ReactStars
+                        count={5}
+                        size={25}
+                        color1={"#fff"}
+                        color2={"#ffc0cb"}
+                        value={product.rating}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="cart">
-                {quantity === 0 ? <Button type="button" hanldleOnclick={() => addToCart(prodID)}>Shop Now</Button> : (
+                <div className="cart">
+                  {quantity === 0 ? <Button type="button" hanldleOnclick={() => addToCart(prodID)}>Shop Now</Button> : (
 
-                  <motion.div className='cart_buttons'
-                    variants={PageFadeInOut}
-                  >
+                    <motion.div className='cart_buttons'
+                      variants={PageFadeInOut}
+                    >
 
-                    <div className='cart_buttons_add'>
-                      <Button type='button' hanldleOnclick={() => decreaseCartQuantity(prodID)}><FaMinus /></Button>
-                      <span>{quantity}</span>
-                      <Button type='button' hanldleOnclick={() => increaseCartQuantity(prodID)}> <FaPlus /></Button>
-                    </div>
-                    <Button type='button' hanldleOnclick={() => removeItemFromCart(prodID)}><FaTrash /></Button>
-                  </motion.div>
-                )}
+                      <div className='cart_buttons_add'>
+                        <Button type='button' hanldleOnclick={() => decreaseCartQuantity(prodID)}><FaMinus /></Button>
+                        <span>{quantity}</span>
+                        <Button type='button' hanldleOnclick={() => increaseCartQuantity(prodID)}> <FaPlus /></Button>
+                      </div>
+                      <Button type='button' hanldleOnclick={() => removeItemFromCart(prodID)}><FaTrash /></Button>
+                    </motion.div>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        </Card>
-      </div>
+          </Card>
+        </div>
 
-      <div className="section">
-        {rltd && rltd.length > 0 && (
-          <section>
-            <div className="header">Related Products</div>
+        <div className="section">
+          {rltd && rltd.length > 0 && (
+            <section>
+              <div className="header">Related Products</div>
 
-            <div className="grid">
-              {rltd.map((item: productInterface) => (
-                <Product item={item} key={item.id} />
-              ))}
-            </div>
-          </section>
-        )}
-      </div>
-    </motion.main>
+              <div className="grid">
+                {rltd.map((item: productInterface) => (
+                  <Product item={item} key={item.id} />
+                ))}
+              </div>
+            </section>
+          )}
+        </div>
+      </motion.main>
+    </>
   )
 }
 

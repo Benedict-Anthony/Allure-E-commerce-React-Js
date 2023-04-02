@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import Service from '../components/Service'
 import { motion } from "framer-motion"
 import { PageFadeInOut } from '../shared/motion'
+import Head from '../shared/Head'
 
 
 const ServiceDetail = () => {
@@ -14,17 +15,21 @@ const ServiceDetail = () => {
         fecthServiceDetail(params.slug as string)
     }, [params.slug]) // eslint-disable-line
     return (
-        <motion.section className="section container"
-            variants={PageFadeInOut}
-            initial="initial"
-            animate="animate"
-        >
-            <main className="services">
-                {serviceDetail.length > 0 && serviceDetail.map((service) => (
-                    <Service key={service.id} {...service} params={params.slug} />
-                ))}
-            </main>
-        </motion.section>
+        <>
+            <Head title="Services" href='/services' description='Photography, Videography, Publshing.' />
+
+            <motion.section className="section container"
+                variants={PageFadeInOut}
+                initial="initial"
+                animate="animate"
+            >
+                <main className="services">
+                    {serviceDetail.length > 0 && serviceDetail.map((service) => (
+                        <Service key={service.id} {...service} params={params.slug} />
+                    ))}
+                </main>
+            </motion.section>
+        </>
     )
 }
 

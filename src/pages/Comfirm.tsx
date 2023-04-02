@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom"
 import Button from '../shared/Button'
 import { motion } from "framer-motion"
 import { PageFadeInOut } from '../shared/motion'
+import Head from '../shared/Head'
 
 const Comfirm = () => {
     const params = useParams()
@@ -28,19 +29,23 @@ const Comfirm = () => {
         comfirmUser()
     })
     return (
-        <motion.section
-            variants={PageFadeInOut}
-            initial="initial"
-            animate="animate"
-        >
+        <>
+            <Head title='Activate account' href='/' />
 
-            <Modal>
-                <p>your account has be activated sucessfully</p>
-                <Button type='button'>
-                    <Link to={"/login"}>OK</Link>
-                </Button>
-            </Modal>
-        </motion.section>
+            <motion.section
+                variants={PageFadeInOut}
+                initial="initial"
+                animate="animate"
+            >
+
+                <Modal>
+                    <p>your account has be activated sucessfully</p>
+                    <Button type='button'>
+                        <Link to={"/login"}>OK</Link>
+                    </Button>
+                </Modal>
+            </motion.section>
+        </>
     )
 }
 

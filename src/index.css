@@ -41,6 +41,9 @@ html::-webkit-scrollbar-thumb {
   cursor: grab;
 }
 
+title {
+  text-transform: capitalize
+}
 
 
 body {

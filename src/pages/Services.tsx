@@ -4,22 +4,27 @@ import ServiceCategory from '../components/ServiceCategory'
 import "../css/service.css"
 import { motion } from "framer-motion"
 import { PageXVariant } from '../shared/motion'
+import Head from '../shared/Head'
 
 const Services = () => {
     const { services } = useServicesContext()
 
     return (
-        <motion.section className="section container"
-            variants={PageXVariant}
-            initial="initial"
-            animate="animate">
+        <>
+            <Head title="Services" href='/services' description='Photography, Videography, Publishing.' />
 
-            <main className="services">
-                {services.length > 0 && services.map((service) => (
-                    <ServiceCategory key={service.id} {...service} />
-                ))}
-            </main>
-        </motion.section>
+            <motion.section className="section container"
+                variants={PageXVariant}
+                initial="initial"
+                animate="animate">
+
+                <main className="services">
+                    {services.length > 0 && services.map((service) => (
+                        <ServiceCategory key={service.id} {...service} />
+                    ))}
+                </main>
+            </motion.section>
+        </>
     )
 }
 

@@ -6,20 +6,25 @@ import ServiceSlice from '../components/ServiceSlice';
 import { FC } from "react";
 import { motion } from "framer-motion"
 import { PageXVariant } from '../shared/motion';
+import Head from '../shared/Head';
 
 
 const Home: FC = () => {
   return (
-    <motion.main
-      variants={PageXVariant}
-      initial="initial"
-      animate="animate"
-    >
-      <Landing />
-      <Products />
-      <Courses />
-      <ServiceSlice />
-    </motion.main>
+    <>
+      <Head title='Welcome' href='/' description='Allure shopping store and more' keyword=' Blog, makeup, fashion, lotions, clothes' />
+
+      <motion.main
+        variants={PageXVariant}
+        initial="initial"
+        animate="animate"
+      >
+        <Landing />
+        <Products />
+        <Courses />
+        <ServiceSlice />
+      </motion.main>
+    </>
   )
 }
 

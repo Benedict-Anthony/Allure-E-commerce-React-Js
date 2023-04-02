@@ -9,6 +9,7 @@ import { motion } from "framer-motion"
 import { PageFadeInOut } from '../shared/motion'
 import { FormLoadingSpiner } from '../shared/Spinner'
 import { toastify } from '../utils/Toastify'
+import Head from '../shared/Head'
 
 
 
@@ -69,6 +70,8 @@ const BookService = () => {
     }, [params.slug, params.book]) // eslint-disable-line
     return (
         <>
+            <Head title={`Book  ${service.name}`} href="/services" description={service.description} keyword={service.name} />
+
             {spinning && <FormLoadingSpiner />}
             <motion.section className="section container"
                 variants={PageFadeInOut}
