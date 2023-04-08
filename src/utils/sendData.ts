@@ -46,3 +46,20 @@ export const bookService = async (url:string, body:any, method:string) => {
 
     return response
 }
+
+export const cartCheckOut = async ( body: any) => {
+    const token = JSON.parse(localStorage.getItem("token") as any)
+
+    const config = {
+        headers: {
+             "Content-Type": "application/json",
+
+            "Authorization":`Bearer ${token.access}`
+        },
+        method: "POST",
+        body:JSON.stringify(body)
+    }
+
+    const response = await fetch("http://127.0.0.1:8000/api/user/orders/", config)
+    return response
+}

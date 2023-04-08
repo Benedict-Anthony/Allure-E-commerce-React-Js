@@ -4,11 +4,16 @@
     justify-content: space-between;
 }
 
+
+.cart-btn {
+    display: none;
+}
+
 .check-out .form {
     width: 100%;
 }
 
-.check-out button {
+.check-out button[type="button"] {
     display: none;
 }
 
@@ -232,6 +237,11 @@
 
 
 @media(max-width:700px) {
+    .cart-btn {
+        display: block;
+        width: 95%;
+        margin: 0 auto;
+    }
 
     .check-out {
         flex-flow: column;
@@ -283,6 +293,10 @@
         justify-content: space-between;
         border-bottom: 1px solid var(--primary-color);
         gap: 10px;
+    }
+
+    .check-out-items button {
+        display: block;
     }
 
     .check-out .cart_item .cart_image {

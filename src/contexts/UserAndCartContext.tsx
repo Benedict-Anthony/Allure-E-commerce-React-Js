@@ -53,7 +53,6 @@ export const UserAndCartContextProvider = ({ children }: childrenProps) => {
         const response = await fetchUserData("user/orders", "GET")
         if (response.status === 200) {
             const data = await response.json()
-            console.log(data)
             dispatch({ type: userAction.USER_ORDERS, payload: data })
         } else {
         }
