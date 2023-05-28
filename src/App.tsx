@@ -26,6 +26,7 @@ import CheckOut from './pages/CheckOut';
 import Services from './pages/Services';
 import ServiceDetail from './pages/ServiceDetail';
 import BookService from './pages/BookService';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
                 </Routes>
               </AnimatePresence>
               <ButtonNav />
+              <Footer />
             </ServicesProvider>
           </ProductProvider>
         </BlogProvider>

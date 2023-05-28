@@ -5,7 +5,7 @@ import cart from "../assets/cart.png";
 import "../css/header.css"
 import { useUserContext } from '../contexts/UserAndCartContext';
 import Button from '../shared/Button';
-import { FaUser } from "react-icons/fa"
+import { FaUser, FaSearch } from "react-icons/fa"
 
 
 
@@ -20,6 +20,12 @@ const Header = () => {
     })
   }
 
+  function addSearchForm() {
+    document.querySelector(".search-toggler")?.addEventListener("click", () => {
+      document.querySelector(".search")?.classList.toggle("active")
+
+    })
+  }
   return (
     <header>
       <div className="container">
@@ -49,10 +55,15 @@ const Header = () => {
                 <li><NavLink to={"sign-in"}><Button type="button">Sign Up</Button></NavLink></li>
               </>
             }
+            <div className="search-toggler" onClick={addSearchForm}>
+              <FaSearch />
+            </div>
+
             <div className="cart cart-toggler" onClick={addBar}>
               <img src={cart} alt="" />
               <span className="cart-total">{cartTotal > 0 && cartTotal}</span>
             </div>
+
           </ul>
         </nav>
       </div>

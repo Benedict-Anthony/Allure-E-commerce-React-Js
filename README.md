@@ -1,46 +1,33 @@
-# Getting Started with Create React App
+# Allure - E commerce web store incoperated with Extra functionalities
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## this project is an E commerce web store with extra functionalities such as User profile section, Blog, Services Booking section. Through the user profile section, users are able to manage their purchased product, the services they have booked, set up a default delivery address and configure some basic settings
 
-## Available Scripts
+## I really enjoyed this project as I learnt so many things and improve on my coding game. I will keep modifiying this project and its opened for contribution, assessment and corrections. Let's take a quick tour on the project
 
-In the project directory, you can run:
+### Home page
 
-### `npm start`
+![Allure Web Store](./readme/home.JPG)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Products page
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![Allure Web Store](./readme/shop.JPG)
 
-### `npm test`
+## Cart Section
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Allure Web Store](./readme/cart.JPG)
 
-### `npm run build`
+## Ckeckout page
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Allure Web Store](./readme/checkout.JPG)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Services page
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Allure Web Store](./readme/services.JPG)
 
-### `npm run eject`
+## Blog page
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Allure Web Store](./readme/blog.JPG)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Sign Up page
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+![Allure Web Store](./readme/l)
