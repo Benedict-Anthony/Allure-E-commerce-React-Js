@@ -30,4 +30,8 @@
 
 ## Sign Up page
 
-![Allure Web Store](./readme/l)
+![Allure Web Store](./readme/login.JPG)
+
+## login Up page
+
+![Allure Web Store](./readme/signup.JPG)
