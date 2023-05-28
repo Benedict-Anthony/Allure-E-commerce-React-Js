@@ -163,7 +163,7 @@ const CheckOut = () => {
     }
     return (
         <>
-            {!spinning && <FormLoadingSpiner />}
+            {spinning && <FormLoadingSpiner />}
             <Head title='Check Out' href='/check-out' description='easy and fast payment with ALlure' keyword='Alure check out' />
 
 

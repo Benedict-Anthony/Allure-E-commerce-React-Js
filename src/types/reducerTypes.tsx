@@ -13,6 +13,10 @@ export interface productInterface {
     thumbnail_url?: string
     description?: string,
     product_discount?: number
+    category?: {
+        name: string
+    }
+
 }
 
 export interface initialProductInterface {
