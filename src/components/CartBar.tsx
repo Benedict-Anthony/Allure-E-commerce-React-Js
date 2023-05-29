@@ -29,7 +29,7 @@ export const CartItems = ({ id, quantity }: cartItemType) => {
             animate="animate"
             key={id}>
             <div className='cart_image'>
-                <img src={"http://127.0.0.1:8000" + item?.thumbnail_url} alt={item?.name} />
+                <img src={item?.thumbnail_url} alt={item?.name} />
             </div>
             <div className="cart_info">
                 <div>

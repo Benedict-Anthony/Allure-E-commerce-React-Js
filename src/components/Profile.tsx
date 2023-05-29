@@ -53,7 +53,7 @@ const Profile = ({ orders: Orders, address: Address, reviews: Reviews, setttings
             <section className="account">
                 <div className="account__profile">
                     <div className='user'>
-                        <img src={"http://127.0.0.1:8000" + profile?.avatar} alt="" />
+                        <img src={profile?.avatar} alt="" />
                         <div>
                             <h1>{profile?.user?.name}</h1>
                             <p>{profile?.user?.email}</p>

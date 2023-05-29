@@ -23,7 +23,7 @@ const Product = ({ item }: Item) => {
     <Card>
       <div className="card__body">
         <div className="card__img">
-          <img src={"http://127.0.0.1:8000" + item.thumbnail_url} alt="" />
+          <img src={item.thumbnail_url} alt="" />
         </div>
 
         <div className="product__info">

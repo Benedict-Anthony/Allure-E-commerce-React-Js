@@ -32,7 +32,7 @@ const SignIn = () => {
       body: JSON.stringify(body)
 
     }
-    const response = await fetch("http://127.0.0.1:8000/api/user/create/", config)
+    const response = await fetch("https://allure-4qsu.onrender.com/api/user/create/", config)
     if (!response.ok || response.status === 400) {
       stopSpining()
       handleError("User with this Email already exist")
@@ -49,7 +49,7 @@ const SignIn = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0)
     if ((formData.first_name === "") || (formData.last_name === "" || (formData.email === "" || (formData.password === "" || formData.passwordcomfirm === "")))) {
       handleError("All fields are required")
       resetError()

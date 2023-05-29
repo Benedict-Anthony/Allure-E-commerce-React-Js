@@ -9,7 +9,7 @@ const Service = ({ id, name, description, slug, image, params }: service | any) 
     return (
         <article className="service">
             <div className="img">
-                <img src={"http://127.0.0.1:8000" + image} alt="" />
+                <img src={image} alt="" />
             </div>
             <div className="info">
                 <h3>{name}</h3>

@@ -11,7 +11,7 @@ const Post = ({ item }: courseInterface) => {
   return (
     <Card>
       <div className="post_card">
-        <img src={"http://127.0.0.1:8000" + item.thumbnail_url} alt="" className="card__img" />
+        <img src={item.thumbnail_url} alt="" className="card__img" />
         <div className="card__info">
           <h2>{item.title}</h2>
           <p>{item.excerpt}</p>

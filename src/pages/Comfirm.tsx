@@ -21,7 +21,7 @@ const Comfirm = () => {
         }
         const comfirmUser = async () => {
 
-            const response = await fetch(`http://127.0.0.1:8000/api/user/comfirm/${params.token}/`, config)
+            const response = await fetch(`https://allure-4qsu.onrender.com/api/user/comfirm/${params.token}/`, config)
             const data = await response.json()
             console.log(data)
         }

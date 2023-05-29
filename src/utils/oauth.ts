@@ -14,7 +14,7 @@ export const oAuth = async (token:any) => {
             method: "POST",
             body: JSON.stringify(fbData)
         }
-       const result = await fetch(`http://127.0.0.1:8000/api/auth/convert-token`, config)
+       const result = await fetch(`https://allure-4qsu.onrender.com/api/auth/convert-token`, config)
 
     const data = await result.json()
     console.log(data)

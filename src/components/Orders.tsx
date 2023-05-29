@@ -47,7 +47,7 @@ const Orders = () => {
                                 </Button>
 
                             </div>
-                            <img src={"http://127.0.0.1:8000" + order.order.product.image_url} alt="" />
+                            <img src={order.order.product.image_url} alt="" />
 
                         </article>
                     )) : <h1>No orders Delivered</h1>}
@@ -69,7 +69,7 @@ const Orders = () => {
                                     </Button>
                                 </div>
 
-                                <img src={"http://127.0.0.1:8000" + order.order.product.image_url} alt="" />
+                                <img src={order.order.product.image_url} alt="" />
 
                             </article>
                         )) : <h1>No Pending Orders</h1>}
@@ -93,7 +93,7 @@ const Orders = () => {
                                         </div>
 
                                     </div>
-                                    <img src={"http://127.0.0.1:8000" + order.order.product.image_url} alt="" />
+                                    <img src={order.order.product.image_url} alt="" />
 
                                 </article>
                             )) : <h1>No Sent Orders</h1>}

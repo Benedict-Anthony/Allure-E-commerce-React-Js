@@ -7,7 +7,7 @@ export const sendUserData = async (url: string,  body:any,  method?:string, cont
         },
         body:body
     }
-    const response = await fetch(`http://127.0.0.1:8000/api/${url}/`, config)
+    const response = await fetch(`https://allure-4qsu.onrender.com/api/${url}/`, config)
 
     return response
 }
@@ -24,7 +24,7 @@ export const updateAccount = async (  body:any) => {
         },
         body:JSON.stringify(body)
     }
-           const response = await fetch("http://127.0.0.1:8000/api/user/create/", config)
+           const response = await fetch("https://allure-4qsu.onrender.com/api/user/create/", config)
 
 
     return response
@@ -41,7 +41,7 @@ export const bookService = async (url:string, body:any, method:string) => {
         },
         body:JSON.stringify(body)
     }
-    const response = await fetch(`http://127.0.0.1:8000/api/user/${url}/`, config)
+    const response = await fetch(`https://allure-4qsu.onrender.com/api/user/${url}/`, config)
 
 
     return response
@@ -60,6 +60,6 @@ export const cartCheckOut = async ( body: any) => {
         body:JSON.stringify(body)
     }
 
-    const response = await fetch("http://127.0.0.1:8000/api/user/orders/", config)
+    const response = await fetch("https://allure-4qsu.onrender.com/api/user/orders/", config)
     return response
 }
