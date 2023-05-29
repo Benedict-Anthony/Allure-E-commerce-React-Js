@@ -45,7 +45,7 @@ const ProductDetail = () => {
             <div className="single__products">
               <h3 className="cart_quantity"> {quantity > 0 && quantity}</h3>
               <div className="image">
-                <img src={"http://127.0.0.1:8000" + product.image_url} alt="" />
+                <img src={product.image_url} alt="" />
               </div>
               <div className="info">
                 <div className="info__text">
