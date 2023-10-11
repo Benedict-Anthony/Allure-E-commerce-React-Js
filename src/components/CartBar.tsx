@@ -8,6 +8,7 @@ import "../css/cartBar.css"
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from "framer-motion"
 import { PageFadeInOut } from '../shared/motion'
+import { imageURL } from '../lib'
 
 
 type cartItemType = {
@@ -29,7 +30,7 @@ export const CartItems = ({ id, quantity }: cartItemType) => {
             animate="animate"
             key={id}>
             <div className='cart_image'>
-                <img src={item?.thumbnail_url} alt={item?.name} />
+                <img src={imageURL + item?.thumbnail_url} alt={item?.name} />
             </div>
             <div className="cart_info">
                 <div>

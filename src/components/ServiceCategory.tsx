@@ -2,13 +2,14 @@ import React from 'react'
 import { service } from '../types/reducerTypes'
 import { Link } from 'react-router-dom'
 import Button from '../shared/Button'
+import { imageURL } from '../lib'
 
 
 const ServiceCategory = ({ id, name, description, slug, image }: service) => {
     return (
         <article className="service">
             <div className="img">
-                <img src={image} alt="" />
+                <img src={imageURL + image} alt="" />
             </div>
             <div className="info">
                 <h3>{name}</h3>

@@ -6,6 +6,7 @@ import { BsFillArrowLeftSquareFill } from 'react-icons/bs'
 import "../css/account.css"
 import "../css/form.css"
 import { useUserContext } from '../contexts/UserAndCartContext'
+import { imageURL } from '../lib'
 
 
 
@@ -53,7 +54,7 @@ const Profile = ({ orders: Orders, address: Address, reviews: Reviews, setttings
             <section className="account">
                 <div className="account__profile">
                     <div className='user'>
-                        <img src={profile?.avatar} alt="" />
+                        <img src={imageURL + profile?.avatar} alt="" />
                         <div>
                             <h1>{profile?.user?.name}</h1>
                             <p>{profile?.user?.email}</p>

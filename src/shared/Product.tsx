@@ -8,6 +8,7 @@ import { FaPlus, FaMinus, FaTrash } from "react-icons/fa"
 import { useUserContext } from '../contexts/UserAndCartContext'
 import { motion, AnimatePresence } from "framer-motion"
 import { PageFadeInOut } from '../shared/motion'
+import { imageURL } from '../lib'
 
 type Item = {
   item: productInterface | any
@@ -23,7 +24,7 @@ const Product = ({ item }: Item) => {
     <Card>
       <div className="card__body">
         <div className="card__img">
-          <img src={item.thumbnail_url} alt="" />
+          <img src={imageURL + item.thumbnail_url} alt="" />
         </div>
 
         <div className="product__info">

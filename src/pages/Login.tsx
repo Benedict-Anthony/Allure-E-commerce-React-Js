@@ -13,6 +13,7 @@ import { FormLoadingSpiner } from '../shared/Spinner';
 import { motion } from "framer-motion"
 import { PageYVariant } from '../shared/motion';
 import Head from '../shared/Head';
+import { baseURL } from '../lib';
 
 
 
@@ -42,7 +43,7 @@ const Login = () => {
       })
 
     }
-    const response = await fetch("https://allure-4qsu.onrender.com/api/token/", config)
+    const response = await fetch(`${baseURL}token/`, config)
 
     if (response.status !== 200) {
       stopSpining()

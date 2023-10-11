@@ -16,6 +16,7 @@ import "../css/products.css";
 import { useContext } from "react";
 import ProductContext from "../contexts/ProductContext"
 import Product from '../shared/Product';
+import { FecthLoadingSpiner } from '../shared/Spinner';
 
 
 const Products = () => {
@@ -23,6 +24,7 @@ const Products = () => {
   const { data: { products } } = useContext(ProductContext)
   return (
     <>
+
       <h1 className="heading">Latest Products</h1>
       <section className="container products" id="products">
 
@@ -61,12 +63,12 @@ const Products = () => {
           className="mySwiper"
         >
 
-          {products.length > 0 && products.slice(0, 10).map((item) => (
+          {products.length > 0 ? products.slice(0, 10).map((item) => (
 
             <SwiperSlide key={item.id}>
               <Product item={item} />
             </SwiperSlide>
-          ))}
+          )) : <FecthLoadingSpiner />}
 
         </Swiper>
       </section>

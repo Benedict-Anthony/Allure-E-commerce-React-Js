@@ -2,13 +2,14 @@ import React from 'react'
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
 import { useUserContext } from '../contexts/UserAndCartContext';
+import { baseURL } from '../lib';
 
 
 const GoogleAuth = () => {
     const { loginUser, startSpining, stopSpining } = useUserContext()
     const registerOrgetUser = async (data: any) => {
         startSpining()
-        const response = await fetch(`https://allure-4qsu.onrender.com/api/user/google/`, {
+        const response = await fetch(`${baseURL}user/google/`, {
             headers: {
                 "Content-Type": "application/json"
             },
@@ -18,7 +19,7 @@ const GoogleAuth = () => {
 
         if (response.status === 200 || response.status === 201 || response.statusText
             === "OK") {
-            const response = await fetch(`https://allure-4qsu.onrender.com/api/token/`, {
+            const response = await fetch(`${baseURL}token/`, {
                 headers: {
                     "Content-Type": "application/json"
                 },

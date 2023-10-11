@@ -12,9 +12,10 @@ import { motion } from "framer-motion"
 import { PageFadeInOut, PageYVariant } from '../shared/motion'
 import ReactStars from "react-stars";
 import Head from '../shared/Head'
+import { imageURL } from '../lib'
 // import ReactStars from "react-rating-stars-component"
 
-
+// nifemi.ojo@pearwheel.com
 const ProductDetail = () => {
   const { getSingleProduct, data: { product, rltd, isFetching } } = useContext(ProductContext)
 
@@ -45,7 +46,7 @@ const ProductDetail = () => {
             <div className="single__products">
               <h3 className="cart_quantity"> {quantity > 0 && quantity}</h3>
               <div className="image">
-                <img src={product.image_url} alt="" />
+                <img src={imageURL + product.image_url} alt="" />
               </div>
               <div className="info">
                 <div className="info__text">

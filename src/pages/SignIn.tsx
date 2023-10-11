@@ -14,6 +14,7 @@ import { PageYVariant } from '../shared/motion';
 import { motion } from "framer-motion"
 import { FormLoadingSpiner } from '../shared/Spinner';
 import Head from '../shared/Head';
+import { baseURL } from '../lib';
 
 
 const SignIn = () => {
@@ -32,7 +33,7 @@ const SignIn = () => {
       body: JSON.stringify(body)
 
     }
-    const response = await fetch("https://allure-4qsu.onrender.com/api/user/create/", config)
+    const response = await fetch(`${baseURL}user/create/`, config)
     if (!response.ok || response.status === 400) {
       stopSpining()
       handleError("User with this Email already exist")
@@ -42,8 +43,6 @@ const SignIn = () => {
       setModal(true)
       console.log(response)
     }
-
-
 
   }
 
