@@ -9,7 +9,7 @@ export const sendUserData = async (url: string, body: any, method?: string, cont
         },
         body:body
     }
-    const response = await fetch(`${baseURL}/${url}/`, config)
+    const response = await fetch(`${baseURL}${url}/`, config)
 
     return response
 }
@@ -26,7 +26,7 @@ export const updateAccount = async (  body:any) => {
         },
         body:JSON.stringify(body)
     }
-           const response = await fetch(`${baseURL}/user/create/`, config)
+           const response = await fetch(`${baseURL}user/create/`, config)
 
 
     return response
@@ -43,7 +43,7 @@ export const bookService = async (url:string, body:any, method:string) => {
         },
         body:JSON.stringify(body)
     }
-    const response = await fetch(`${baseURL}/user/${url}/`, config)
+    const response = await fetch(`${baseURL}user/${url}/`, config)
 
 
     return response
@@ -62,6 +62,6 @@ export const cartCheckOut = async ( body: any) => {
         body:JSON.stringify(body)
     }
 
-    const response = await fetch(`${baseURL}/user/orders/`, config)
+    const response = await fetch(`${baseURL}user/orders/`, config)
     return response
 }
