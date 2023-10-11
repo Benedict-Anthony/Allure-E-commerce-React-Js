@@ -5,6 +5,7 @@ import Button from '../shared/Button'
 import { motion } from "framer-motion"
 import { PageFadeInOut } from '../shared/motion'
 import Head from '../shared/Head'
+import { baseURL } from '../lib'
 
 const Comfirm = () => {
     const params = useParams()
@@ -21,7 +22,7 @@ const Comfirm = () => {
         }
         const comfirmUser = async () => {
 
-            const response = await fetch(`https://allure-4qsu.onrender.com/api/user/comfirm/${params.token}/`, config)
+            const response = await fetch(`${baseURL}user/comfirm/${params.token}/`, config)
             const data = await response.json()
             console.log(data)
         }
