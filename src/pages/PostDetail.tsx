@@ -38,7 +38,7 @@ const PostDetail = () => {
                         <p>{post.description}</p>
                     </div>
                     <div>
-                        <img src={`http://127.0.0.1:8000${post.image_url}`} alt="" />
+                        <img src={post.image_url} alt="" />
                     </div>
                 </section>
 
